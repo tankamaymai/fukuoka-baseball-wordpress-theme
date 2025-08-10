@@ -1,0 +1,7 @@
+
+@use "../global" as *;
+
+/*16px＝1rem*/
+@function rem($px) {
+    @return $px / 16 * 1rem;
+}

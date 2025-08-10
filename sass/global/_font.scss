@@ -1,0 +1,15 @@
+@use "sass:math";
+// 文字フォントの種類
+$base-font: "Zen Kaku Gothic New", sans-serif;
+$second-font: "Poppin", sans-serif;
+$third-font: "Inter", sans-serif;
+$fourth-font: "Noto Sans JP", sans-serif;
+$fifth-font: "Chivo", sans-serif;
+$sixth-font: "Sansita Swashed", sans-serif;
+$seventh-font: "Questrial", sans-serif;
+
+// 文字の太さ
+$regular: 300;
+$normal: 400;
+$medium: 500;
+$bold: 700;
