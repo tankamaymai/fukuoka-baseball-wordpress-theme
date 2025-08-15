@@ -9,6 +9,11 @@
     <?php if (is_404()) : ?>
         <meta http-equiv="refresh" content=" 3 url=<?php echo esc_url(home_url("")); ?>">
     <?php endif; ?>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Autour+One&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Sawarabi+Mincho&family=Zen+Old+Mincho&display=swap" rel="stylesheet">
     <?php wp_head(); ?>
 </head>
 
@@ -16,74 +21,74 @@
     <?php wp_body_open(); ?>
     <header class="header js-header">
         <div class="header__inner">
-            <div class="header-logo">
-                <a href="<?php echo esc_url(home_url("")); ?>" class="logo__link">
-                    <h1 class="header__logo"><img
-                            src="<?php echo esc_url(get_theme_file_uri("/images/logo-b 1.svg")); ?>" alt="ヘッダーロゴ"
-                            class="header__logo"></h1>
+            <!-- ロゴ -->
+            <div class="header__logo">
+                <a href="<?php echo esc_url(home_url("")); ?>" class="header__logo-link">
+                    <img src="<?php echo esc_url(get_theme_file_uri("/images/fukuoka-b-logo.webp")); ?>" alt="福岡ベースボールクラブ" class="header__logo-img">
+                    <span class="header__logo-text">福岡ベースボールクラブ</span>
                 </a>
             </div>
+            
+            <!-- デスクトップメニュー -->
             <div class="header__wrapper">
                 <nav class="header__nav md3-none">
-                    <ul class="header__lists">
-                        <li class="header__item">
-                            <a href="<?php echo esc_url(home_url("about")); ?>" class="header__link ">About us</a>
+                    <ul class="header__nav-list">
+                        <li class="header__nav-item">
+                            <a href="<?php echo esc_url(home_url("about")); ?>" class="header__nav-link">チームについて</a>
                         </li>
-                        <li class="header__item">
-                            <a href="<?php echo esc_url(home_url("service")); ?>" class="header__link">Service</a>
+                        <li class="header__nav-item">
+                            <a href="<?php echo esc_url(home_url("results")); ?>" class="header__nav-link">試合結果</a>
                         </li>
-                        <li class="header__item">
-                            <a href="<?php echo esc_url(get_category_link(get_category_by_slug('works')->term_id)); ?>"
-                                class="header__link">Works</a>
+                        <li class="header__nav-item">
+                            <a href="<?php echo esc_url(home_url("players")); ?>" class="header__nav-link">選手紹介</a>
                         </li>
-                        <li class="header__item">
-                            <a href="<?php echo esc_url(get_category_link(get_category_by_slug('news')->term_id)); ?>"
-                                class="header__link">News</a>
-                        </li>
-                        <li class="header__item">
-                            <a href="<?php echo esc_url(home_url("recruit")); ?>" class="header__link">Recruit</a>
+                        <li class="header__nav-item">
+                            <a href="<?php echo esc_url(home_url("contact")); ?>" class="header__nav-link">お問い合わせ</a>
                         </li>
                     </ul>
                 </nav>
-                <div class="header__wrapper-contact">
-                    <a href="<?php echo esc_url(home_url("contact")); ?>"
-                        class="header__link--contact btn md3-none">Contact</a>
+                
+                <!-- お問い合わせボタン -->
+                <div class="header__cta">
+                    <a href="<?php echo esc_url(home_url("contact")); ?>" class="header__contact-btn btn btn-primary md3-none">
+                        お問い合わせ
+                    </a>
                 </div>
             </div>
         </div>
 
-        <!--ハンバーガー-->
+        <!-- ハンバーガーメニュー -->
         <div class="hamburger js-hamburger md3-show">
-            <span></span>
-            <span></span>
-            <span></span>
+            <span class="hamburger__line"></span>
+            <span class="hamburger__line"></span>
+            <span class="hamburger__line"></span>
         </div>
 
-        <!--ドロワー-->
+        <!-- モバイルドロワーメニュー -->
         <div class="drawer-menu js-drawer">
             <div class="drawer-menu__inner">
-                <ul class="drawer-menu__lists">
-                    <li class="drawer-menu__item">
-                        <a href="<?php echo esc_url(home_url("about")); ?>" class="drawer-menu__link">About us</a>
-                    </li>
-                    <li class="drawer-menu__item">
-                        <a href="<?php echo esc_url(home_url("service")); ?>" class="drawer-menu__link">Service</a>
-                    </li>
-                    <li class="drawer-menu__item">
-                        <a href="<?php echo esc_url(get_category_link(get_category_by_slug('works')->term_id)); ?>"
-                            class="drawer-menu__link">Works</a>
-                    </li>
-                    <li class="drawer-menu__item">
-                        <a href="<?php echo esc_url(get_category_link(get_category_by_slug('news')->term_id)); ?>"
-                            class="drawer-menu__link">News</a>
-                    </li>
-                    <li class="drawer-menu__item">
-                        <a href="<?php echo esc_url(home_url("recruit")); ?>" class="drawer-menu__link">Recruit</a>
-                    </li>
-                </ul>
-                <div class="drawer-menu__contact-item">
-                    <a href="<?php echo esc_url(home_url("contact")); ?>"
-                        class="drawer-menu__link drawer-menu__link--contact">Contact</a>
+                <nav class="drawer-menu__nav">
+                    <ul class="drawer-menu__list">
+                        <li class="drawer-menu__item">
+                            <a href="<?php echo esc_url(home_url("about")); ?>" class="drawer-menu__link">チームについて</a>
+                        </li>
+                        <li class="drawer-menu__item">
+                            <a href="<?php echo esc_url(home_url("results")); ?>" class="drawer-menu__link">試合結果</a>
+                        </li>
+                        <li class="drawer-menu__item">
+                            <a href="<?php echo esc_url(home_url("players")); ?>" class="drawer-menu__link">選手紹介</a>
+                        </li>
+                        <li class="drawer-menu__item">
+                            <a href="<?php echo esc_url(home_url("contact")); ?>" class="drawer-menu__link">お問い合わせ</a>
+                        </li>
+                    </ul>
+                </nav>
+                
+                <!-- モバイル用お問い合わせボタン -->
+                <div class="drawer-menu__cta">
+                    <a href="<?php echo esc_url(home_url("contact")); ?>" class="drawer-menu__contact-btn btn btn-primary">
+                        お問い合わせ
+                    </a>
                 </div>
             </div>
         </div>

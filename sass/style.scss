@@ -1,6 +1,10 @@
 @use "./base/base";
 @use "./base/reset";
-@use "./base/about";
-@use "./base/service";
+@use "./base/about"; 
 @use "./base/common";
+@use "./base/toppage";
+@use "./base/footer";
+@use "./base/header";
+
+@use "./base/sponsors";
 @use "./global" as *;

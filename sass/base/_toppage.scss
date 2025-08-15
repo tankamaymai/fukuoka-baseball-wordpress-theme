@@ -5,3 +5,925 @@
 @function rem($px) {
     @return $px / 16 * 1rem;
 }
+
+// ヒーローセクション
+.hero {
+  position: relative;
+  max-height: 800px;
+  margin-top: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: $text-white;
+  overflow: hidden;
+}
+
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -5;
+}
+
+.hero__bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero__scrolling-text {
+  position: absolute;
+ bottom: 30px;
+  z-index: 3;
+  pointer-events: none;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero__text-line {
+  white-space: nowrap;
+  font-family: $eighth-font;
+  font-weight: $bold;
+  font-size: clamp(100px, 15vw, 300px);
+  color: rgba(37, 50, 116, 0.7);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  animation: scrollText 60s linear infinite;
+}
+
+@keyframes scrollText {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+.hero-fv-img {
+  width:100vw;
+  height: auto;
+  aspect-ratio:  1920/ 800;
+  position: relative;
+  z-index: 5;
+  @include mq("md") {
+    width: 100%;
+    aspect-ratio: 1080/ 1920;
+  }
+  img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+  }
+}
+
+
+// 最新ニュースセクション
+.news-section {
+  padding: 80px 0;
+  background-color: $main-color;
+}
+
+.news-section .inner {
+  max-width: 1200px;
+}
+
+.news-section__title {
+  font-family: $eighth-font;
+  font-weight: $bold;
+  font-size: clamp(60px, 8vw, 120px);
+  color: $text-black;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  letter-spacing: 0.05em;
+}
+
+.news-section__subtitle {
+  font-family: $base-font;
+  font-size: 16px;
+  color: $text-gray;
+  margin-bottom: 60px;
+}
+
+.news-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+// PICKUP エリア
+.news-pickup {
+  position: relative;
+}
+
+.news-pickup__label {
+  font-family: $eighth-font;
+  font-weight: $bold;
+  font-size: 24px;
+  color: $text-black;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+  letter-spacing: 0.1em;
+}
+
+.news-pickup__item {
+  background-color: $text-black;
+  border-radius: 12px;
+  padding: 30px;
+  position: relative;
+  overflow: hidden;
+}
+
+.news-pickup__category {
+  background-color: $main-color;
+  color: $text-black;
+  font-size: 12px;
+  font-weight: $bold;
+  padding: 6px 12px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+.news-pickup__date {
+  color: $text-white;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.news-pickup__title {
+  color: $text-white;
+  font-size: 18px;
+  font-weight: $bold;
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+
+.news-pickup__excerpt {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+// ニュース一覧エリア
+.news-category-area {
+  display: flex;
+  flex-direction: column;
+}
+
+.news-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.news-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 0;
+  border-bottom: 1px solid $gray2;
+  transition: transform 0.3s ease;
+  
+  &:hover {
+    transform: translateX(5px);
+  }
+  
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.news-item__date {
+  color: $text-gray;
+  font-size: 14px;
+  min-width: 80px;
+}
+
+.news-item__category {
+  background-color: $gray3;
+  color: $text-black;
+  font-size: 10px;
+  font-weight: $bold;
+  padding: 4px 8px;
+  border-radius: 12px;
+  text-transform: uppercase;
+  min-width: 60px;
+  text-align: center;
+}
+
+.news-item__title {
+  flex: 1;
+  
+  a {
+    color: $text-black;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: $medium;
+    line-height: 1.4;
+    
+    &:hover {
+      color: $accent-color;
+    }
+  }
+}
+
+.news-item__arrow {
+  color: $accent-color;
+  font-size: 20px;
+  transition: transform 0.3s ease;
+}
+
+.news-item:hover .news-item__arrow {
+  transform: translateX(5px);
+}
+
+.news-view-more {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.news-view-more__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background-color: $accent-color;
+  color: $text-white;
+  padding: 15px 30px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-family: $eighth-font;
+  font-weight: $bold;
+  font-size: 16px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background-color: darken($accent-color, 10%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.news-view-more__icon {
+  font-size: 18px;
+  transition: transform 0.3s ease;
+}
+
+.news-view-more__btn:hover .news-view-more__icon {
+  transform: translateX(5px);
+}
+
+@include mq("md") {
+  .news-section {
+    padding: 60px 0;
+  }
+  
+  .news-section__title {
+    font-size: 48px;
+    margin-bottom: 15px;
+  }
+  
+  .news-section__subtitle {
+    font-size: 14px;
+    margin-bottom: 40px;
+  }
+  
+  .news-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .news-pickup__label {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+  
+  .news-pickup__item {
+    padding: 20px;
+  }
+  
+  .news-pickup__title {
+    font-size: 16px;
+  }
+  
+  .news-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 15px 0;
+  }
+  
+  .news-item__date {
+    min-width: auto;
+    font-size: 12px;
+  }
+  
+  .news-item__category {
+    min-width: auto;
+  }
+  
+  .news-item__title a {
+    font-size: 14px;
+  }
+}
+
+// 最新の試合結果セクション
+.latest-result {
+  padding: 80px 0;
+  background-color: #f8f9fa;
+}
+
+.result-card {
+  display: flex;
+  align-items: center;
+  background-color: $main-color;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  gap: 30px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.result-card__date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $accent-color;
+  color: $text-white;
+  padding: 20px;
+  border-radius: 8px;
+  min-width: 100px;
+}
+
+.result-card__month {
+  font-size: 16px;
+  font-weight: $medium;
+}
+
+.result-card__day {
+  font-size: 36px;
+  font-weight: $bold;
+}
+
+.result-card__details {
+  flex: 1;
+}
+
+.result-card__teams {
+  font-size: 20px;
+  font-weight: $bold;
+  color: $accent-color;
+  margin-bottom: 10px;
+}
+
+.result-card__score {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.result-card__score-home,
+.result-card__score-away {
+  font-size: 24px;
+  font-weight: $bold;
+  color: $text-black;
+  background-color: $gray3;
+  padding: 8px 12px;
+  border-radius: 6px;
+  min-width: 40px;
+  text-align: center;
+}
+
+.result-card__score-separator {
+  font-size: 18px;
+  font-weight: $bold;
+  color: $text-gray;
+}
+
+.result-card__result {
+  font-size: 18px;
+  font-weight: $bold;
+  color: $sub-accent;
+  margin-bottom: 6px;
+}
+
+.result-card__venue {
+  color: $text-gray;
+  font-size: 14px;
+}
+
+@include mq("md") {
+  .latest-result {
+    padding: 60px 0;
+  }
+  
+  .result-card {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+    gap: 20px;
+  }
+  
+  .result-card__teams {
+    font-size: 16px;
+  }
+  
+  .result-card__score {
+    justify-content: center;
+  }
+  
+  .result-card__score-home,
+  .result-card__score-away {
+    font-size: 20px;
+  }
+}
+
+// 排出選手セクション
+.alumni-section {
+  padding: 80px 0;
+  background-color: $main-color;
+}
+
+.alumni-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+}
+
+.alumni-card {
+  background-color: $text-white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid $gray2;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  }
+}
+
+.alumni-card__year {
+  background-color: $accent-color;
+  color: $text-white;
+  font-family: $eighth-font;
+  font-weight: $bold;
+  font-size: 24px;
+  padding: 16px;
+  border-radius: 8px;
+  min-width: 80px;
+  text-align: center;
+  line-height: 1;
+}
+
+.alumni-card__info {
+  flex: 1;
+}
+
+.alumni-card__name {
+  font-size: 20px;
+  font-weight: $bold;
+  color: $text-black;
+  margin-bottom: 6px;
+}
+
+.alumni-card__position {
+  color: $text-gray;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.alumni-card__destination {
+  color: $sub-accent;
+  font-size: 14px;
+  font-weight: $medium;
+  margin-bottom: 6px;
+}
+
+.alumni-card__team {
+  font-weight: $bold;
+  color: $accent-color;
+  font-size: 16px;
+}
+
+@include mq("md") {
+  .alumni-section {
+    padding: 60px 0;
+  }
+  
+  .alumni-list {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .alumni-card {
+    padding: 20px;
+    gap: 16px;
+  }
+  
+  .alumni-card__year {
+    font-size: 20px;
+    padding: 12px;
+    min-width: 70px;
+  }
+  
+  .alumni-card__name {
+    font-size: 18px;
+  }
+  
+  .alumni-card__team {
+    font-size: 14px;
+  }
+}
+
+// ABOUTセクション
+.about-section {
+  padding: 80px 0;
+  background-color: $main-color;
+}
+
+.about-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+// 左側テキストエリア
+.about-text {
+  padding-right: 40px;
+}
+
+.about-text__title {
+  font-family: $eighth-font;
+  font-weight: $bold;
+  font-size: clamp(48px, 6vw, 72px);
+  color: $text-black;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  letter-spacing: 0.05em;
+}
+
+.about-text__subtitle {
+  font-family: $base-font;
+  font-size: 16px;
+  color: $text-gray;
+  margin-bottom: 40px;
+  font-weight: $normal;
+}
+
+.about-text__description {
+  margin-bottom: 40px;
+  
+  p {
+    color: $text-black;
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.about-text__button {
+  margin-top: 40px;
+}
+
+.btn-about {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background-color: $accent-color;
+  color: $text-white;
+  padding: 18px 36px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-family: $eighth-font;
+  font-weight: $bold;
+  font-size: 16px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  letter-spacing: 0.05em;
+  
+  &:hover {
+    background-color: darken($accent-color, 10%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.btn-about__icon {
+  font-size: 18px;
+  transition: transform 0.3s ease;
+}
+
+.btn-about:hover .btn-about__icon {
+  transform: translateX(5px);
+}
+
+// 右側スライダーエリア
+.about-slider {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.about-swiper {
+  width: 100%;
+  height: 500px;
+}
+
+.about-slide {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.about-slide__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.5s ease;
+}
+
+.about-slide:hover .about-slide__image {
+  transform: scale(1.05);
+}
+
+// Swiperのカスタマイズ
+.about-pagination {
+  bottom: 20px !important;
+  
+  .swiper-pagination-bullet {
+    background-color: rgba(255, 255, 255, 0.5);
+    opacity: 1;
+    width: 12px;
+    height: 12px;
+    margin: 0 6px !important;
+    transition: all 0.3s ease;
+    
+    &.swiper-pagination-bullet-active {
+      background-color: $text-white;
+      transform: scale(1.2);
+    }
+  }
+}
+
+.about-button-next,
+.about-button-prev {
+  color: $text-white !important;
+  background-color: rgba(0, 0, 0, 0.3) !important;
+  width: 50px !important;
+  height: 50px !important;
+  border-radius: 50% !important;
+  transition: all 0.3s ease !important;
+  
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.6) !important;
+    transform: scale(1.1) !important;
+  }
+  
+  &::after {
+    font-size: 18px !important;
+    font-weight: bold !important;
+  }
+}
+
+.about-button-next {
+  right: 20px !important;
+}
+
+.about-button-prev {
+  left: 20px !important;
+}
+
+@include mq("md") {
+  .about-section {
+    padding: 60px 0;
+  }
+  
+  .about-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
+  }
+  
+  .about-text {
+    padding-right: 0;
+    order: 2;
+  }
+  
+  .about-slider {
+    order: 1;
+  }
+  
+  .about-text__title {
+    font-size: 36px;
+    margin-bottom: 8px;
+  }
+  
+  .about-text__subtitle {
+    font-size: 14px;
+    margin-bottom: 30px;
+  }
+  
+  .about-text__description {
+    margin-bottom: 30px;
+    
+    p {
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+  }
+  
+  .about-text__button {
+    margin-top: 30px;
+  }
+  
+  .btn-about {
+    padding: 15px 30px;
+    font-size: 14px;
+  }
+  
+  .about-swiper {
+    height: 350px;
+  }
+  
+  .about-button-next,
+  .about-button-prev {
+    width: 40px !important;
+    height: 40px !important;
+    
+    &::after {
+      font-size: 16px !important;
+    }
+  }
+  
+  .about-button-next {
+    right: 15px !important;
+  }
+  
+  .about-button-prev {
+    left: 15px !important;
+  }
+}
+
+// 入団募集CTAセクション
+.recruit-cta {
+  padding: 120px 0;
+  background-image: url('../images/fukuoka-b-fv.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: $text-white;
+  text-align: center;
+  position: relative;
+
+}
+
+.recruit-cta__content {
+  position: relative;
+  z-index: 2;
+}
+
+.recruit-cta__title {
+  font-size: 36px;
+  font-weight: $bold;
+  margin-bottom: 20px;
+}
+
+.recruit-cta__text {
+  font-size: 18px;
+  margin-bottom: 40px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.recruit-cta__features {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 2;
+}
+
+.recruit-cta__actions {
+  position: relative;
+  z-index: 2;
+}
+
+.feature-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.feature-item__icon {
+  font-size: 48px;
+}
+
+.feature-item__text {
+  font-weight: $medium;
+}
+
+@include mq("md") {
+  .recruit-cta {
+    padding: 60px 0;
+  }
+  
+  .recruit-cta__title {
+    font-size: 28px;
+  }
+  
+  .recruit-cta__text {
+    font-size: 16px;
+  }
+  
+  .recruit-cta__features {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .feature-item__icon {
+    font-size: 36px;
+  }
+}
+
+// SNSセクション（Instagram）
+.sns-section {
+  padding: 80px 0;
+  background-color: #f8f9fa;
+}
+
+.instagram-feed {
+  max-width: 1000px;
+  margin: 0 auto;
+  
+  // Instagram Feed プラグインのスタイル調整
+  #sb_instagram {
+    max-width: 100% !important;
+  }
+  
+  .sbi_item {
+    margin: 10px !important;
+    border-radius: 12px !important;
+    overflow: hidden !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+    transition: transform 0.3s ease !important;
+    
+    &:hover {
+      transform: translateY(-5px) !important;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
+    }
+  }
+  
+  .sbi_photo {
+    border-radius: 12px !important;
+  }
+  
+  .sbi_photo img {
+    border-radius: 12px !important;
+  }
+  
+  // ハッシュタグやキャプションのスタイル
+  .sbi_caption_wrap {
+    padding: 15px !important;
+    background-color: $text-white !important;
+  }
+  
+  .sbi_caption {
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+    color: $text-black !important;
+  }
+}
+
+@include mq("md") {
+  .sns-section {
+    padding: 60px 0;
+  }
+  
+  .instagram-feed {
+    .sbi_item {
+      margin: 8px !important;
+    }
+  }
+}
