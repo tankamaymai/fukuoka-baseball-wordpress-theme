@@ -2,10 +2,11 @@
 
 // フッター
 .footer {
-  background-color: $accent-color;
+  background: $accent-color;
   color: $text-white;
   padding: 60px 0 0;
   margin-top: auto;
+  position: relative;
 }
 
 .footer__inner {
@@ -57,11 +58,15 @@
 .footer__nav {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
   gap: 30px;
 }
 
 .footer__nav-section {
-  margin-bottom: 20px;
+  margin-bottom: 0;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
 }
 
 .footer__nav-title {
@@ -70,8 +75,8 @@
   font-size: 16px;
   color: $sub-accent;
   margin-bottom: 15px;
+  padding-bottom: 8px;
   border-bottom: 2px solid $sub-accent;
-  padding-bottom: 5px;
 }
 
 .footer__nav-list {
@@ -88,7 +93,7 @@
   color: $text-white;
   text-decoration: none;
   font-size: 14px;
-  line-height: 1.6;
+  line-height: 1.5;
   transition: color 0.3s ease;
   
   &:hover {
@@ -99,17 +104,19 @@
 // SNSリンク
 .footer__social {
   text-align: center;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 25px;
+  border-radius: 8px;
 }
 
 .footer__social-title {
   font-family: $base-font;
   font-weight: $bold;
-  font-size: 16px;
+  font-size: 18px;
   color: $sub-accent;
   margin-bottom: 20px;
+  padding-bottom: 8px;
   border-bottom: 2px solid $sub-accent;
-  padding-bottom: 5px;
-  display: inline-block;
 }
 
 .footer__social-list {
@@ -127,95 +134,38 @@
   justify-content: center;
   width: 50px;
   height: 50px;
-  background-color: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 50%;
   color: $text-white;
   text-decoration: none;
   transition: all 0.3s ease;
   
   &:hover {
-    background-color: $sub-accent;
-    transform: translateY(-3px);
+    background: $sub-accent;
+    transform: translateY(-2px);
   }
 }
 
 .footer__social-icon {
-  font-size: 24px;
+  font-size: 22px;
 }
 
-// 事務局情報
-.footer__info {
-  margin-bottom: 40px;
-}
-
-.footer__contact-title {
-  font-family: $base-font;
-  font-weight: $bold;
-  font-size: 18px;
-  color: $sub-accent;
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-.footer__contact-details {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-}
-
-.footer__contact-item {
-  margin: 0;
-  font-size: 14px;
-  line-height: 1.6;
-}
-
-.footer__contact-label {
-  font-weight: $medium;
-  color: $sub-accent;
-}
-
-.footer__contact-link {
-  color: $text-white;
-  text-decoration: none;
-  
-  &:hover {
-    color: $sub-accent;
-  }
-}
 
 // フッターボトム
 .footer__bottom {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 0;
+  text-align: center;
+  padding: 25px 0;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.1);
+  margin: 0 -25px;
+  padding-left: 25px;
+  padding-right: 25px;
 }
 
-.footer__legal-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  gap: 20px;
-}
-
-.footer__legal-link {
-  color: $text-white;
-  text-decoration: none;
-  font-size: 12px;
-  opacity: 0.8;
-  
-  &:hover {
-    color: $sub-accent;
-    opacity: 1;
-  }
-}
 
 .footer__copyright {
-  font-size: 12px;
-  opacity: 0.8;
+  font-size: 14px;
+  color: $text-white;
   
   p {
     margin: 0;
@@ -225,7 +175,7 @@
 // レスポンシブ対応
 @include mq("md") {
   .footer {
-    padding: 40px 0 0;
+    padding: 50px 0 0;
   }
   
   .footer__inner {
@@ -244,35 +194,21 @@
   
   .footer__nav {
     grid-template-columns: 1fr;
+    grid-template-rows: auto;
     gap: 20px;
   }
   
   .footer__nav-section {
-    text-align: left;
-  }
-  
-  .footer__contact-details {
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .footer__bottom {
-    flex-direction: column;
-    gap: 15px;
     text-align: center;
+    padding: 18px;
   }
   
-  .footer__legal-list {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
+  .footer__social {
+    padding: 20px;
   }
-}
-
-@include mq("sp") {
+  
   .footer__social-list {
-    gap: 10px;
+    gap: 12px;
   }
   
   .footer__social-link {
@@ -282,5 +218,72 @@
   
   .footer__social-icon {
     font-size: 20px;
+  }
+  
+  .footer__bottom {
+    margin: 0 -15px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+@include mq("sp") {
+  .footer {
+    padding: 40px 0 0;
+  }
+  
+  .footer__content {
+    gap: 25px;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+  }
+  
+  .footer__logo-img {
+    max-width: 100px;
+  }
+  
+  .footer__logo-text {
+    font-size: 16px;
+  }
+  
+  .footer__nav-section {
+    padding: 15px;
+  }
+  
+  .footer__nav-title {
+    font-size: 15px;
+  }
+  
+  .footer__nav-link {
+    font-size: 13px;
+  }
+  
+  .footer__social {
+    padding: 18px;
+  }
+  
+  .footer__social-title {
+    font-size: 16px;
+  }
+  
+  .footer__social-list {
+    gap: 10px;
+  }
+  
+  .footer__social-link {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .footer__social-icon {
+    font-size: 18px;
+  }
+  
+  .footer__bottom {
+    padding: 20px 0;
+  }
+  
+  .footer__copyright {
+    font-size: 13px;
   }
 }

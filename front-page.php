@@ -193,7 +193,7 @@
                     <?php
                     // ピックアップ記事（最新記事を1つ取得）
                     $pickup_query = new WP_Query(array(
-                        'category_name' => 'news',
+                        'post_type' => 'post',
                         'posts_per_page' => 1,
                         'post_status' => 'publish'
                     ));
@@ -210,7 +210,7 @@
                                 <h4 class="news-pickup__title">
                                     <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                                 </h4>
-                                <div class="news-pickup__excerpt"><?php echo wp_trim_words(get_the_excerpt(), 20, '...'); ?></div>
+                                <div class="news-pickup__excerpt"><?php echo wp_trim_words(get_the_excerpt() ?: get_the_content(), 20, '...'); ?></div>
                             </article>
                             <?php
                         endwhile;
@@ -219,9 +219,9 @@
                         ?>
                         <div class="news-pickup__item">
                             <span class="news-pickup__category">NEWS</span>
-                            <div class="news-pickup__date">2025.08.10</div>
-                            <h4 class="news-pickup__title">竹内 大翔選手 加入のお知らせ</h4>
-                            <div class="news-pickup__excerpt">この度、福岡ベースボールクラブに新たに竹内大翔選手が加入することをお知らせいたします。</div>
+                            <div class="news-pickup__date">2024.08.10</div>
+                            <h4 class="news-pickup__title">お知らせをお待ちください</h4>
+                            <div class="news-pickup__excerpt">現在表示するお知らせはありません。新しい投稿をお待ちください。</div>
                         </div>
                         <?php
                     endif;
@@ -233,7 +233,7 @@
                     <div class="news-list">
                         <?php
                         $news_query = new WP_Query(array(
-                            'category_name' => 'news',
+                            'post_type' => 'post',
                             'posts_per_page' => 5,
                             'post_status' => 'publish'
                         ));
@@ -245,7 +245,9 @@
                                 <article class="news-item">
                                     <div class="news-item__date"><?php echo get_the_date('m.d'); ?></div>
                                     <?php if (!empty($categories)): ?>
-                                        <span class="news-item__category"><?php echo esc_html(strtoupper($categories[0]->slug)); ?></span>
+                                        <span class="news-item__category"><?php echo esc_html(strtoupper($categories[0]->name)); ?></span>
+                                    <?php else: ?>
+                                        <span class="news-item__category">NEWS</span>
                                     <?php endif; ?>
                                     <div class="news-item__title">
                                         <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>

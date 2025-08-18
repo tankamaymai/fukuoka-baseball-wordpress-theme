@@ -6,7 +6,18 @@
     @return $px / 16 * 1rem;
 }
 
-
+// ヘッダー分の余白
+body {
+  padding-top: 80px;
+  
+  @include mq("md") {
+    padding-top: 70px;
+  }
+  
+  @include mq("sp") {
+    padding-top: 60px;
+  }
+}
 
 .inner {
   max-width: 1200px;
@@ -138,3 +149,4 @@
     font-size: 16px;
   }
 }
+

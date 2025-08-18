@@ -5,6 +5,8 @@
 @use "./base/toppage";
 @use "./base/footer";
 @use "./base/header";
-
 @use "./base/sponsors";
+@use "./base/players";
+@use "./base/game-info";
+@use "./base/news";
 @use "./global" as *;

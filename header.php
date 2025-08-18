@@ -37,7 +37,7 @@
                             <a href="<?php echo esc_url(home_url("about")); ?>" class="header__nav-link">チームについて</a>
                         </li>
                         <li class="header__nav-item">
-                            <a href="<?php echo esc_url(home_url("results")); ?>" class="header__nav-link">試合結果</a>
+                            <a href="<?php echo esc_url(home_url("game-info")); ?>" class="header__nav-link">試合情報</a>
                         </li>
                         <li class="header__nav-item">
                             <a href="<?php echo esc_url(home_url("players")); ?>" class="header__nav-link">選手紹介</a>
@@ -55,13 +55,13 @@
                     </a>
                 </div>
             </div>
-        </div>
-
-        <!-- ハンバーガーメニュー -->
-        <div class="hamburger js-hamburger md3-show">
-            <span class="hamburger__line"></span>
-            <span class="hamburger__line"></span>
-            <span class="hamburger__line"></span>
+            
+            <!-- ハンバーガーメニュー -->
+            <div class="hamburger js-hamburger md3-show">
+                <span class="hamburger__line"></span>
+                <span class="hamburger__line"></span>
+                <span class="hamburger__line"></span>
+            </div>
         </div>
 
         <!-- モバイルドロワーメニュー -->
@@ -73,7 +73,7 @@
                             <a href="<?php echo esc_url(home_url("about")); ?>" class="drawer-menu__link">チームについて</a>
                         </li>
                         <li class="drawer-menu__item">
-                            <a href="<?php echo esc_url(home_url("results")); ?>" class="drawer-menu__link">試合結果</a>
+                            <a href="<?php echo esc_url(home_url("game-info")); ?>" class="drawer-menu__link">試合情報</a>
                         </li>
                         <li class="drawer-menu__item">
                             <a href="<?php echo esc_url(home_url("players")); ?>" class="drawer-menu__link">選手紹介</a>
