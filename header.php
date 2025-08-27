@@ -43,7 +43,7 @@
                             <a href="<?php echo esc_url(home_url("players")); ?>" class="header__nav-link">選手紹介</a>
                         </li>
                         <li class="header__nav-item">
-                            <a href="<?php echo esc_url(home_url("contact")); ?>" class="header__nav-link">お問い合わせ</a>
+                            <a href="<?php echo esc_url(home_url("news")); ?>" class="header__nav-link">お知らせ</a>
                         </li>
                     </ul>
                 </nav>
@@ -79,7 +79,7 @@
                             <a href="<?php echo esc_url(home_url("players")); ?>" class="drawer-menu__link">選手紹介</a>
                         </li>
                         <li class="drawer-menu__item">
-                            <a href="<?php echo esc_url(home_url("contact")); ?>" class="drawer-menu__link">お問い合わせ</a>
+                            <a href="<?php echo esc_url(home_url("news")); ?>" class="drawer-menu__link">お知らせ</a>
                         </li>
                     </ul>
                 </nav>

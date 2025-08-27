@@ -9,49 +9,249 @@
 // ヒーローセクション
 .hero {
   position: relative;
+  height: 100vh;
+  min-height: 600px;
   max-height: 800px;
-  margin-top: 80px;
+  overflow: hidden;
+  color: $text-white;
+  
+  @include mq("md") {
+    height: 80vh;
+    min-height: 500px;
+    margin-top: 60px;
+  }
+}
+
+// ヒーロースライダー
+.hero-swiper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.hero-slide {
+  position: relative;
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-
-  color: $text-white;
-  overflow: hidden;
 }
 
-.hero__bg {
+.hero-slide__bg {
   position: absolute;
   inset: 0;
-  z-index: -5;
+  z-index: 1;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      45deg,
+      rgba(37, 50, 116, 0.6) 0%,
+      rgba(37, 50, 116, 0.3) 50%,
+      transparent 100%
+    );
+    z-index: 2;
+  }
 }
 
-.hero__bg-img {
+.hero-slide__bg-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center;
+  transition: transform 8s ease-out;
+  transform: scale(1);
 }
 
+// アクティブなスライドの画像をゆっくりズーム
+.swiper-slide-active .hero-slide__bg-img {
+  transform: scale(1.05);
+}
+
+.hero-slide__content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  max-width: 800px;
+  padding: 0 20px;
+  
+  @include mq("md") {
+    max-width: 90%;
+    padding: 0 15px;
+  }
+}
+
+.hero-slide__text {
+  position: relative;
+  padding: 40px 0;
+  
+  // 初期状態（非表示）
+  .hero-slide__title,
+  .hero-slide__description {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: none;
+  }
+  
+  // アニメーション状態
+  &.animate {
+    .hero-slide__title {
+      animation: elegantSlideIn 1.2s cubic-bezier(0.215, 0.610, 0.355, 1.000) forwards;
+    }
+    
+    .hero-slide__description {
+      animation: elegantSlideIn 1.2s cubic-bezier(0.215, 0.610, 0.355, 1.000) 0.3s forwards;
+    }
+    
+    .hero-slide__accent-dots span {
+      animation: dotReveal 0.6s ease-out 1.0s forwards;
+      
+      &:nth-child(1) { animation-delay: 1.0s; }
+      &:nth-child(2) { animation-delay: 1.2s; }
+      &:nth-child(3) { animation-delay: 1.4s; }
+    }
+  }
+  
+  // 表示完了状態
+  &.visible {
+    .hero-slide__title,
+    .hero-slide__description {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .hero-slide__accent-dots span {
+      opacity: 0.6;
+      transform: scale(1);
+    }
+  }
+  
+  // 非表示状態
+  &.hidden {
+    .hero-slide__title,
+    .hero-slide__description {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    
+    .hero-slide__accent-dots span {
+      opacity: 0;
+      transform: scale(0.5);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+  }
+}
+
+.hero-slide__title {
+  font-family: $eighth-font;
+  font-weight: $bold;
+  font-size: clamp(32px, 5vw, 64px);
+  color: $text-white;
+  margin-bottom: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  letter-spacing: 0.05em;
+  transition: all 0.6s ease;
+  cursor: default;
+  
+  &:hover {
+    text-shadow: 
+      2px 2px 4px rgba(0, 0, 0, 0.5),
+      0 0 20px rgba(255, 255, 255, 0.3);
+    transform: translateY(-1px);
+  }
+  
+  @include mq("md") {
+    margin-bottom: 15px;
+    
+    &:hover {
+      transform: none;
+    }
+  }
+}
+
+.hero-slide__description {
+  font-size: clamp(16px, 2.5vw, 24px);
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  font-weight: $medium;
+  transition: all 0.4s ease;
+  cursor: default;
+  
+  &:hover {
+    color: $text-white;
+    text-shadow: 
+      1px 1px 2px rgba(0, 0, 0, 0.5),
+      0 0 15px rgba(255, 255, 255, 0.2);
+  }
+  
+  @include mq("md") {
+    line-height: 1.5;
+    
+    &:hover {
+      color: rgba(255, 255, 255, 0.9);
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+  }
+}
+
+// スライドイン アニメーション
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// ヒーローSwiperナビゲーション（非表示）
+.hero-swiper-pagination {
+  display: none !important;
+}
+
+.hero-swiper-button-next,
+.hero-swiper-button-prev {
+  display: none !important;
+}
+
+// スクロールテキスト
 .hero__scrolling-text {
   position: absolute;
- bottom: 30px;
-  z-index: 3;
+  bottom: 30px;
+  left: 0;
+  right: 0;
+  z-index: 5;
   pointer-events: none;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
+  
+  @include mq("md") {
+    bottom: 20px;
+  }
 }
 
 .hero__text-line {
   white-space: nowrap;
   font-family: $eighth-font;
   font-weight: $bold;
-  font-size: clamp(100px, 15vw, 300px);
-  color: rgba(37, 50, 116, 0.7);
+  font-size: clamp(60px, 12vw, 200px);
+  color: rgba(37, 50, 116, 0.15);
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  animation: scrollText 60s linear infinite;
+  animation: scrollText 80s linear infinite;
+  
+  @include mq("md") {
+    font-size: clamp(40px, 10vw, 120px);
+  }
 }
 
 @keyframes scrollText {
@@ -59,21 +259,208 @@
   100% { transform: translateX(-100%); }
 }
 
-.hero-fv-img {
-  width:100vw;
-  height: auto;
-  aspect-ratio:  1920/ 800;
-  position: relative;
-  z-index: 5;
-  @include mq("md") {
-    width: 100%;
-    aspect-ratio: 1080/ 1920;
+// スライド変更時のフェードアニメーション
+.hero-swiper .swiper-slide {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  
+  &.swiper-slide-active {
+    opacity: 1;
   }
-  img{
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    object-position: center;
+  
+  &.swiper-slide-prev,
+  &.swiper-slide-next {
+    opacity: 0.5;
+  }
+}
+
+// 上品な装飾要素
+.hero__decorations {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.hero__decoration {
+  position: absolute;
+  width: 2px;
+  height: 80px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+  
+  &--top-left {
+    top: 60px;
+    left: 60px;
+    animation: decorationPulse 4s ease-in-out infinite;
+  }
+  
+  &--top-right {
+    top: 60px;
+    right: 60px;
+    animation: decorationPulse 4s ease-in-out infinite 1s;
+  }
+  
+  &--bottom-left {
+    bottom: 100px;
+    left: 60px;
+    animation: decorationPulse 4s ease-in-out infinite 2s;
+  }
+  
+  &--bottom-right {
+    bottom: 100px;
+    right: 60px;
+    animation: decorationPulse 4s ease-in-out infinite 3s;
+  }
+  
+  @include mq("md") {
+    display: none;
+  }
+}
+
+// サブトルなパーティクル
+.hero__particles {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+// テキストアクセント要素
+.hero-slide__accent-line {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.8),
+    transparent
+  );
+  margin: 0 auto 30px;
+  animation: lineGlow 3s ease-in-out infinite;
+  
+  @include mq("md") {
+    width: 40px;
+    margin-bottom: 20px;
+  }
+}
+
+.hero-slide__accent-dots {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 30px;
+  
+  @include mq("md") {
+    gap: 8px;
+    margin-top: 20px;
+  }
+  
+  span {
+    width: 6px;
+    height: 6px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    animation: dotPulse 2s ease-in-out infinite;
+    
+    &:nth-child(1) {
+      animation-delay: 0s;
+    }
+    
+    &:nth-child(2) {
+      animation-delay: 0.3s;
+    }
+    
+    &:nth-child(3) {
+      animation-delay: 0.6s;
+    }
+  }
+}
+
+// アニメーション定義
+@keyframes decorationPulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scaleY(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scaleY(1.2);
+  }
+}
+
+@keyframes particleFloat {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(20px);
+    opacity: 0;
+  }
+}
+
+@keyframes lineGlow {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scaleX(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scaleX(1.1);
+  }
+}
+
+@keyframes dotPulse {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.3);
+  }
+}
+
+// 上品なテキストアニメーション
+@keyframes elegantSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  60% {
+    opacity: 0.8;
+    transform: translateY(-2px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// ドット表示アニメーション
+@keyframes dotReveal {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 0.6;
+    transform: scale(1);
   }
 }
 
@@ -159,6 +546,10 @@
   font-weight: $bold;
   line-height: 1.4;
   margin-bottom: 12px;
+}
+
+.news-pickup__title a{
+  color: $text-white;
 }
 
 .news-pickup__excerpt {
@@ -373,6 +764,19 @@
   flex: 1;
 }
 
+.result-card__type {
+  display: inline-block;
+  background-color: $sub-accent;
+  color: $text-white;
+  font-size: 12px;
+  font-weight: $bold;
+  padding: 4px 12px;
+  border-radius: 12px;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
 .result-card__teams {
   font-size: 20px;
   font-weight: $bold;
@@ -542,6 +946,43 @@
   
   .alumni-card__team {
     font-size: 14px;
+  }
+}
+
+// 排出選手が空の場合のスタイル
+.alumni-empty {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: $text-white;
+  border-radius: 12px;
+  border: 2px dashed $gray2;
+  
+  p {
+    margin: 0 0 15px 0;
+    color: $text-gray;
+    font-size: 16px;
+    
+    &:last-child {
+      margin-bottom: 0;
+    }
+    
+    a {
+      color: $accent-color;
+      text-decoration: none;
+      font-weight: $medium;
+      
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  
+  @include mq("md") {
+    padding: 40px 15px;
+    
+    p {
+      font-size: 14px;
+    }
   }
 }
 
@@ -925,5 +1366,63 @@
     .sbi_item {
       margin: 8px !important;
     }
+  }
+}
+
+
+// スポンサーセクション
+.sponsor-section {
+  padding: 80px 0;
+  background-color: $gray3;
+  overflow: hidden;
+}
+
+.sponsor-slider {
+  overflow: hidden;
+}
+
+.sponsor-swiper {
+  overflow: visible;
+}
+
+.sponsor-swiper .swiper-wrapper {
+  align-items: center;
+  transition-timing-function: linear !important;
+}
+
+.sponsor-swiper .swiper-slide {
+  width: auto !important;
+  flex-shrink: 0;
+}
+
+.sponsor-item {
+  max-width: 300px;
+  aspect-ratio: 280 / 110;
+  width: 100%;
+  height: auto;
+
+}
+
+.sponsor-item__img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+// レスポンシブ対応
+@include mq("md") {
+  .sponsor-section {
+    padding: 60px 0;
+  }
+  
+  .sponsor-item {
+    max-width: 200px;
+    aspect-ratio: 200 / 80;
+  }
+}
+
+@include mq("sp") {
+  .sponsor-section {
+    padding: 40px 0;
   }
 }

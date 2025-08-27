@@ -14,6 +14,9 @@ function my_setup()
 }
 add_action('after_setup_theme', 'my_setup');
 
+// 排出選手管理機能を読み込み
+require_once get_template_directory() . '/inc/alumni-custom-fields.php';
+
 /* CSSとJavaScriptの読み込み */
 function my_script_init()
 { // WordPressに含まれているjquery.jsを読み込まない
@@ -290,11 +293,25 @@ function game_result_details_callback($post) {
     $opponent_score = get_post_meta($post->ID, 'opponent_score', true);
     $game_result = get_post_meta($post->ID, 'game_result', true);
     $game_location = get_post_meta($post->ID, 'game_location', true);
+    $game_type = get_post_meta($post->ID, 'game_type', true);
     
     echo '<table class="form-table">';
     echo '<tr>';
     echo '<th><label for="game_date">試合日</label></th>';
     echo '<td><input type="date" id="game_date" name="game_date" value="' . esc_attr($game_date) . '" /></td>';
+    echo '</tr>';
+    echo '<tr>';
+    echo '<th><label for="game_type">試合種類</label></th>';
+    echo '<td>';
+    echo '<select id="game_type" name="game_type">';
+    echo '<option value="">選択してください</option>';
+    echo '<option value="オープン戦"' . selected($game_type, 'オープン戦', false) . '>オープン戦</option>';
+    echo '<option value="リーグ戦"' . selected($game_type, 'リーグ戦', false) . '>リーグ戦</option>';
+    echo '<option value="大会"' . selected($game_type, '大会', false) . '>大会</option>';
+    echo '<option value="練習試合"' . selected($game_type, '練習試合', false) . '>練習試合</option>';
+    echo '<option value="紅白戦"' . selected($game_type, '紅白戦', false) . '>紅白戦</option>';
+    echo '</select>';
+    echo '</td>';
     echo '</tr>';
     echo '<tr>';
     echo '<th><label for="opponent">対戦相手</label></th>';
@@ -340,7 +357,7 @@ function save_game_result_details($post_id) {
         return;
     }
 
-    $fields = array('game_date', 'opponent', 'our_score', 'opponent_score', 'game_result', 'game_location');
+    $fields = array('game_date', 'game_type', 'opponent', 'our_score', 'opponent_score', 'game_result', 'game_location');
     
     foreach ($fields as $field) {
         if (isset($_POST[$field])) {
@@ -371,6 +388,7 @@ function game_schedule_details_callback($post) {
     $schedule_time = get_post_meta($post->ID, 'schedule_time', true);
     $schedule_opponent = get_post_meta($post->ID, 'schedule_opponent', true);
     $schedule_location = get_post_meta($post->ID, 'schedule_location', true);
+    $schedule_type = get_post_meta($post->ID, 'schedule_type', true);
     
     echo '<table class="form-table">';
     echo '<tr>';
@@ -380,6 +398,19 @@ function game_schedule_details_callback($post) {
     echo '<tr>';
     echo '<th><label for="schedule_time">試合時間</label></th>';
     echo '<td><input type="time" id="schedule_time" name="schedule_time" value="' . esc_attr($schedule_time) . '" /></td>';
+    echo '</tr>';
+    echo '<tr>';
+    echo '<th><label for="schedule_type">試合種類</label></th>';
+    echo '<td>';
+    echo '<select id="schedule_type" name="schedule_type">';
+    echo '<option value="">選択してください</option>';
+    echo '<option value="オープン戦"' . selected($schedule_type, 'オープン戦', false) . '>オープン戦</option>';
+    echo '<option value="リーグ戦"' . selected($schedule_type, 'リーグ戦', false) . '>リーグ戦</option>';
+    echo '<option value="大会"' . selected($schedule_type, '大会', false) . '>大会</option>';
+    echo '<option value="練習試合"' . selected($schedule_type, '練習試合', false) . '>練習試合</option>';
+    echo '<option value="紅白戦"' . selected($schedule_type, '紅白戦', false) . '>紅白戦</option>';
+    echo '</select>';
+    echo '</td>';
     echo '</tr>';
     echo '<tr>';
     echo '<th><label for="schedule_opponent">対戦相手</label></th>';
@@ -406,7 +437,7 @@ function save_game_schedule_details($post_id) {
         return;
     }
 
-    $fields = array('schedule_date', 'schedule_time', 'schedule_opponent', 'schedule_location');
+    $fields = array('schedule_date', 'schedule_time', 'schedule_type', 'schedule_opponent', 'schedule_location');
     
     foreach ($fields as $field) {
         if (isset($_POST[$field])) {

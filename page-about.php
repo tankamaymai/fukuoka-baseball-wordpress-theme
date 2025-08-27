@@ -39,35 +39,69 @@
         <div class="inner">
             <h2 class="section-title">チームの特徴</h2>
             <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-card__icon">⚾</div>
-                    <h3 class="feature-card__title">高いレベルでの技術指導</h3>
-                    <p class="feature-card__description">元プロ野球選手を含む経験豊富な指導陣が、個々のレベルに合わせた丁寧な技術指導を行います。基礎から応用まで、総合的な野球技術の向上を図ります。</p>
+                <div class="feature-card" data-bg="<?php echo esc_url(get_theme_file_uri('/images/fukuoka-b-ga3.webp')); ?>" data-hover-bg="<?php echo esc_url(get_theme_file_uri('/images/fukuoka-b-ga7.webp')); ?>">
+                    <div class="feature-card__bg">
+                        <img src="<?php echo esc_url(get_theme_file_uri('/images/fukuoka-b-ga3.webp')); ?>" alt="" class="feature-card__bg-img">
+                        <img src="<?php echo esc_url(get_theme_file_uri('/images/fukuoka-b-ga7.webp')); ?>" alt="" class="feature-card__bg-img feature-card__bg-img--hover">
+                    </div>
+                    <div class="feature-card__overlay"></div>
+                    <div class="feature-card__content">
+                        <h3 class="feature-card__title">まだ終われない人の、再スタートの場所</h3>
+                        <p class="feature-card__description">大学・社会人の枠から漏れても、情熱はまだ燃えている——その想いを受け止める受け皿が福岡ベースボールクラブです。公式野球を本気で続けたい人に、実戦機会と成長の導線を用意しています。</p>
+                        <ul class="feature-card__points">
+                            <li>個別の課題に向き合える練習設計で、もう一段うまくなる</li>
+                            <li>試合出場のチャンスが多く、実戦で伸びる</li>
+                            <li>「まだいける」を成果に変えるサポート体制</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-card__icon">🏆</div>
-                    <h3 class="feature-card__title">豊富な試合経験</h3>
-                    <p class="feature-card__description">年間100試合以上の試合を通じて、実戦経験を積み重ねます。九州リーグをはじめ、全国大会への参加機会も豊富に用意しています。</p>
+                <div class="feature-card" data-bg="<?php echo esc_url(get_theme_file_uri('/images/fukuoka-b-ga8.webp')); ?>" data-hover-bg="<?php echo esc_url(get_theme_file_uri('/images/fukuoka-b-ga11.webp')); ?>">
+                    <div class="feature-card__bg">
+                        <img src="<?php echo esc_url(get_theme_file_uri('/images/fukuoka-b-ga8.webp')); ?>" alt="" class="feature-card__bg-img">
+                        <img src="<?php echo esc_url(get_theme_file_uri('/images/fukuoka-b-ga11.webp')); ?>" alt="" class="feature-card__bg-img feature-card__bg-img--hover">
+                    </div>
+                    <div class="feature-card__overlay"></div>
+                    <div class="feature-card__content">
+                        <h3 class="feature-card__title">上のカテゴリーへ——次のステージを狙える環境</h3>
+                        <p class="feature-card__description">技術・戦術・メンタルを総合的に鍛え、独立リーグ／プロ／社会人野球など上位カテゴリーでプレーする選手も多数。次を目指すための道筋があります。</p>
+                        <ul class="feature-card__points">
+                            <li>成長指標が見えるトレーニングで実力を可視化</li>
+                            <li>対外試合や発信でチャンスに届く露出を確保</li>
+                            <li>挑戦と継続を支えるチーム文化</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-card__icon">💪</div>
-                    <h3 class="feature-card__title">充実したトレーニング環境</h3>
-                    <p class="feature-card__description">専用グラウンド、室内練習場、最新のトレーニング機器を完備。天候に左右されることなく、年間を通じて質の高い練習を行うことができます。</p>
+                <div class="feature-card" data-bg="<?php echo esc_url(get_theme_file_uri('/images/fukuoka-b-ga9.webp')); ?>" data-hover-bg="<?php echo esc_url(get_theme_file_uri('/images/fukuoka-b-ga12.webp')); ?>">
+                    <div class="feature-card__bg">
+                        <img src="<?php echo esc_url(get_theme_file_uri('/images/fukuoka-b-ga9.webp')); ?>" alt="" class="feature-card__bg-img">
+                        <img src="<?php echo esc_url(get_theme_file_uri('/images/fukuoka-b-ga12.webp')); ?>" alt="" class="feature-card__bg-img feature-card__bg-img--hover">
+                    </div>
+                    <div class="feature-card__overlay"></div>
+                    <div class="feature-card__content">
+                        <h3 class="feature-card__title">スポンサー『たしろジム』通い放題</h3>
+                        <p class="feature-card__description">協賛いただく「たしろジム」さんの設備をいつでも利用可能。練習日以外も体づくりを継続でき、パフォーマンスの土台を強化できます。</p>
+                        <ul class="feature-card__points">
+                            <li>シーズンを通してコンディションを安定化</li>
+                            <li>競技に必要な基礎筋力と可動域を強化</li>
+                            <li>自主トレの質と量を両立</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="feature-card">
-                    <div class="feature-card__icon">🎯</div>
-                    <h3 class="feature-card__title">プロ志向のサポート</h3>
-                    <p class="feature-card__description">プロ野球球団とのパイプを活かし、スカウト陣への推薦やトライアウト情報の提供など、プロ入りを目指す選手を全面的にサポートします。</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-card__icon">🤝</div>
-                    <h3 class="feature-card__title">人間性重視の教育</h3>
-                    <p class="feature-card__description">野球技術だけでなく、礼儀や協調性、責任感などの人間性を重視した指導を行い、社会人として通用する人材の育成に力を入れています。</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-card__icon">📚</div>
-                    <h3 class="feature-card__title">進路サポート</h3>
-                    <p class="feature-card__description">プロ野球だけでなく、大学進学や一般企業への就職など、多様な進路選択をサポート。選手一人ひとりの将来を見据えたキャリア形成を支援します。</p>
+                <div class="feature-card" data-bg="<?php echo esc_url(get_theme_file_uri('/images/fukuoka-b-ga10.webp')); ?>" data-hover-bg="<?php echo esc_url(get_theme_file_uri('/images/fukuoka-b-ga13.webp')); ?>">
+                    <div class="feature-card__bg">
+                        <img src="<?php echo esc_url(get_theme_file_uri('/images/fukuoka-b-ga10.webp')); ?>" alt="" class="feature-card__bg-img">
+                        <img src="<?php echo esc_url(get_theme_file_uri('/images/fukuoka-b-ga13.webp')); ?>" alt="" class="feature-card__bg-img feature-card__bg-img--hover">
+                    </div>
+                    <div class="feature-card__overlay"></div>
+                    <div class="feature-card__content">
+                        <h3 class="feature-card__title">就職支援制度あり——競技とキャリアの両立</h3>
+                        <p class="feature-card__description">スポンサー企業様の就職支援制度を利用でき、就職活動を有利に進められます。野球も仕事も本気で続けたい人に、現実的な選択肢を。</p>
+                        <ul class="feature-card__points">
+                            <li>競技継続を見据えた働き方の提案が可能</li>
+                            <li>地域企業とのつながりで安心してキャリア形成</li>
+                            <li>"プレーも仕事も"を実現するサポート</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

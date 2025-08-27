@@ -1,0 +1,314 @@
+@use "../global" as *;
+
+// お問い合わせページヒーロー
+.contact-hero {
+  background-color: $accent-color;
+  padding: 80px 0 60px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(37, 50, 116, 0.9) 0%, rgba(37, 50, 116, 0.7) 100%);
+  z-index: 1;
+}
+
+.contact-hero__inner {
+  position: relative;
+  z-index: 2;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 25px;
+}
+
+.contact-hero__title {
+  font-family: $second-font;
+  font-weight: $bold;
+  font-size: 72px;
+  color: $text-white;
+  letter-spacing: 0.1em;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.contact-hero__subtitle {
+  font-family: $second-font;
+  font-weight: $medium;
+  font-size: 20px;
+  color: $text-white;
+  letter-spacing: 0.02em;
+  line-height: 1.6;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+// メインコンテンツ
+.contact-main {
+  padding: 120px 0;
+  background-color: $text-white;
+}
+
+.contact-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+// セクション共通
+.contact-section {
+  background-color: $text-white;
+  border-radius: 16px;
+  padding: 60px 50px;
+  margin-bottom: 40px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid $gray2;
+}
+
+.contact-section__header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.contact-section__title {
+  font-family: $eighth-font;
+  font-weight: $bold;
+  font-size: 36px;
+  color: $accent-color;
+  letter-spacing: 0.1em;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.contact-section__description {
+  font-family: $base-font;
+  font-weight: $normal;
+  font-size: 16px;
+  color: $text-gray;
+  line-height: 1.8;
+}
+
+// フォームラッパー
+.contact-form-wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+// レスポンシブ対応
+@include mq("md") {
+  .contact-hero {
+    padding: 60px 0 40px;
+  }
+  
+  .contact-hero__inner {
+    padding: 0 15px;
+  }
+  
+  .contact-hero__title {
+    font-size: 48px;
+  }
+  
+  .contact-hero__subtitle {
+    font-size: 16px;
+  }
+  
+  .contact-main {
+    padding: 80px 0;
+  }
+  
+  .contact-section {
+    padding: 40px 30px;
+    margin-bottom: 30px;
+  }
+  
+  .contact-section__header {
+    margin-bottom: 40px;
+  }
+  
+  .contact-section__title {
+    font-size: 28px;
+    margin-bottom: 15px;
+  }
+}
+
+// コンタクトフォーム
+.contact-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contact-form__field {
+  margin-bottom: 30px;
+}
+
+.contact-form__field--checkbox {
+  margin-bottom: 40px;
+}
+
+.contact-form__label {
+  display: block;
+  font-family: $second-font;
+  font-weight: $medium;
+  font-size: 16px;
+  color: $text-black;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.contact-form__required {
+  color: #e74c3c;
+  font-size: 14px;
+  margin-left: 4px;
+}
+
+.contact-form__input,
+.contact-form__textarea {
+  width: 100%;
+  padding: 15px 20px;
+  border: 2px solid $gray2;
+  border-radius: 8px;
+  font-family: $base-font;
+  font-weight: $normal;
+  font-size: 16px;
+  color: $text-black;
+  background-color: $text-white;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-form__input:focus,
+.contact-form__textarea:focus {
+  outline: none;
+  border-color: $accent-color;
+  box-shadow: 0 0 0 3px rgba(37, 50, 116, 0.2);
+}
+
+.contact-form__textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.contact-form__input::placeholder,
+.contact-form__textarea::placeholder {
+  color: $gray;
+  opacity: 1;
+}
+
+.contact-form__checkbox {
+  margin-right: 10px;
+  accent-color: $accent-color;
+}
+
+.contact-form__field--checkbox {
+  display: flex;
+  align-items: flex-start;
+  font-family: $base-font;
+  font-weight: $normal;
+  font-size: 14px;
+  color: $text-black;
+  line-height: 1.6;
+}
+
+.contact-form__submit {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.contact-form__button {
+  display: inline-block;
+  padding: 18px 60px;
+  background-color: $accent-color;
+  color: $text-white;
+  font-family: $eighth-font;
+  font-weight: $bold;
+  font-size: 18px;
+  letter-spacing: 0.1em;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  min-width: 200px;
+  text-transform: uppercase;
+}
+
+.contact-form__button:hover {
+  background-color: rgba(37, 50, 116, 0.9);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(37, 50, 116, 0.3);
+}
+
+.contact-form__button:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(37, 50, 116, 0.3);
+}
+
+// エラーメッセージ
+.wpcf7-not-valid-tip {
+  color: #e74c3c;
+  font-size: 14px;
+  margin-top: 5px;
+  display: block;
+}
+
+.wpcf7-validation-errors {
+  background-color: #fdf2f2;
+  border: 1px solid #f5c6cb;
+  border-radius: 8px;
+  padding: 15px 20px;
+  margin-bottom: 20px;
+  color: #721c24;
+  font-size: 14px;
+}
+
+// 成功メッセージ
+.wpcf7-mail-sent-ok {
+  background-color: #f0f9f0;
+  border: 1px solid #c3e6c3;
+  border-radius: 8px;
+  padding: 15px 20px;
+  margin-bottom: 20px;
+  color: #155724;
+  font-size: 14px;
+}
+
+// スピナー（送信中アニメーション）
+.wpcf7-spinner {
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
+// レスポンシブ対応
+@include mq("md") {
+  .contact-form {
+    padding: 0 15px;
+  }
+  
+  .contact-form__field {
+    margin-bottom: 25px;
+  }
+  
+  .contact-form__input,
+  .contact-form__textarea {
+    padding: 12px 15px;
+    font-size: 16px;
+  }
+  
+  .contact-form__button {
+    padding: 15px 40px;
+    font-size: 16px;
+    min-width: 180px;
+  }
+  
+  .contact-form__submit {
+    margin-top: 30px;
+  }
+}
+
+@include mq("sp") {
+  .contact-form__button {
+    width: 100%;
+    padding: 15px 20px;
+  }
+}

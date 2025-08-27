@@ -1,70 +1,167 @@
-// ヒーローセクションのテキストアニメーション
+// ヒーローSwiperスライダー
 document.addEventListener('DOMContentLoaded', function() {
-    // GSAP Timeline for Hero Animations
-    const heroTimeline = gsap.timeline();
     
-    // 背景画像のズームイン効果
-    heroTimeline.from('.hero__bg-img', {
-        scale: 1.1,
-        duration: 2,
-        ease: "power2.out"
-    });
-    
-    // メインタイトル「好きこそ無敵。」の文字ずつアニメーション
-    const mainTitleText = '好きこそ無敵。';
-    const mainTitleElement = document.querySelector('.js-hero-title');
-    if (mainTitleElement) {
-        // 文字を分割してspanで囲む
-        mainTitleElement.innerHTML = mainTitleText.split('').map(char => 
-            `<span class="char">${char}</span>`
-        ).join('');
+    // テキストアニメーション制御関数
+    function animateSlideText(slideText) {
+        // 全てのクラスをリセット
+        slideText.classList.remove('hidden', 'animate', 'visible');
         
-        // 文字ごとにアニメーション
-        heroTimeline.from('.js-hero-title .char', {
-            opacity: 0,
-            y: 50,
-            rotationX: -90,
-            transformOrigin: "0% 50% -50px",
-            duration: 0.8,
-            stagger: 0.1,
-            ease: "back.out(1.7)"
-        }, "-=1.5");
+        // アニメーション開始
+        slideText.classList.add('animate');
+        
+        // アニメーション完了後に固定状態に
+        setTimeout(() => {
+            slideText.classList.remove('animate');
+            slideText.classList.add('visible');
+        }, 1800); // タイトル(1.2s) + サブタイトル遅延(0.3s) + バッファ(0.3s)
     }
     
-    // サブタイトル「福岡ベースボールクラブ」の滑らかなフェードイン
-    heroTimeline.from('.js-hero-subtitle', {
-        opacity: 0,
-        y: 30,
-        duration: 1.2,
-        ease: "power2.out"
-    }, "-=0.5");
+    function hideSlideText(slideText) {
+        // アニメーションをリセットして非表示に
+        slideText.classList.remove('animate', 'visible');
+        slideText.classList.add('hidden');
+    }
     
-    // ボタンの順次フェードイン
-    heroTimeline.from('.js-hero-actions .btn', {
-        opacity: 0,
-        y: 20,
-        duration: 0.8,
-        stagger: 0.2,
-        ease: "power2.out"
-    }, "-=0.3");
+    const heroSwiper = new Swiper('.hero-swiper', {
+        // 基本設定
+        loop: true,
+        effect: 'fade',
+        fadeEffect: {
+            crossFade: true
+        },
+        speed: 1500,
+        
+        // 自動再生
+        autoplay: {
+            delay: 5250,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: false,
+            waitForTransition: false,
+            stopOnLastSlide: false,
+        },
+        
+        // ナビゲーション（無効化）
+        pagination: {
+            el: '.hero-swiper-pagination',
+            type: 'bullets',
+            clickable: false,
+            dynamicBullets: false,
+        },
+        
+        navigation: {
+            nextEl: '.hero-swiper-button-next',
+            prevEl: '.hero-swiper-button-prev',
+            enabled: false,
+        },
+        
+        // パララックス効果
+        parallax: true,
+        
+        // タッチ操作のみ無効化（自動再生は維持）
+        allowTouchMove: false,
+        simulateTouch: false,
+        touchRatio: 0,
+        resistanceRatio: 0,
+        
+        // スライド変更時のイベント
+        on: {
+            init: function() {
+                // 初期化時にアクティブスライドのテキストアニメーション開始
+                this.slides.forEach((slide, index) => {
+                    const slideText = slide.querySelector('.hero-slide__text');
+                    if (slideText) {
+                        if (index === this.activeIndex) {
+                            // アクティブスライドにアニメーション適用
+                            setTimeout(() => {
+                                animateSlideText(slideText);
+                            }, 500);
+                        } else {
+                            // 非アクティブスライドは非表示
+                            hideSlideText(slideText);
+                        }
+                    }
+                });
+                
+                // 自動再生を確実に開始
+                this.autoplay.start();
+            },
+            
+            slideChangeTransitionStart: function() {
+                // 全てのスライドのテキストを非表示に
+                this.slides.forEach(slide => {
+                    const slideText = slide.querySelector('.hero-slide__text');
+                    if (slideText) {
+                        hideSlideText(slideText);
+                    }
+                });
+            },
+            
+            slideChangeTransitionEnd: function() {
+                // 新しいアクティブスライドにアニメーション適用
+                const activeSlide = this.slides[this.activeIndex];
+                if (activeSlide) {
+                    const slideText = activeSlide.querySelector('.hero-slide__text');
+                    if (slideText) {
+                        setTimeout(() => {
+                            animateSlideText(slideText);
+                        }, 200);
+                    }
+                }
+            }
+        },
+        
+        // レスポンシブ設定
+        breakpoints: {
+            768: {
+                speed: 1200,
+                autoplay: {
+                    delay: 4500,
+                },
+            },
+            480: {
+                speed: 1000,
+                autoplay: {
+                    delay: 3750,
+                },
+            }
+        }
+    });
     
     // ボタンのホバーエフェクト
     document.querySelectorAll('.btn').forEach(btn => {
         btn.addEventListener('mouseenter', function() {
-            gsap.to(this, {
-                scale: 1.05,
-                duration: 0.3,
-                ease: "power2.out"
-            });
+            this.style.transform = 'translateY(-2px) scale(1.02)';
+            this.style.transition = 'transform 0.3s ease';
         });
         
         btn.addEventListener('mouseleave', function() {
-            gsap.to(this, {
-                scale: 1,
-                duration: 0.3,
-                ease: "power2.out"
-            });
+            this.style.transform = 'translateY(0) scale(1)';
+            this.style.transition = 'transform 0.3s ease';
         });
+    });
+    
+    // 画像の遅延読み込み対応
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '50px'
+    };
+    
+    const imageObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                if (img.dataset.src) {
+                    img.src = img.dataset.src;
+                    img.removeAttribute('data-src');
+                    imageObserver.unobserve(img);
+                }
+            }
+        });
+    }, observerOptions);
+    
+    // ヒーロー画像の監視
+    document.querySelectorAll('.hero-slide__bg-img[data-src]').forEach(img => {
+        imageObserver.observe(img);
     });
 });
 
@@ -122,6 +219,54 @@ document.addEventListener('DOMContentLoaded', function() {
                     scale: 1.1,
                     duration: 0.8,
                     ease: "power2.out"
+                });
+            }
+        }
+    });
+});
+
+// スポンサーセクションのSwiperスライダー（無限スライダー）
+document.addEventListener('DOMContentLoaded', function() {
+    const sponsorSwiper = new Swiper('.sponsor-swiper', {
+        // 無限ループ
+        loop: true,
+        
+        // 自動再生設定（連続スクロール）
+        autoplay: {
+            delay: 0,
+            disableOnInteraction: false,
+        },
+        
+        // スライダーの基本設定
+        speed: 5000,
+        slidesPerView: "auto",
+        spaceBetween: 40,
+        allowTouchMove: false,
+        
+        // レスポンシブ設定
+        breakpoints: {
+            1024: {
+                slidesPerView: "auto",
+                spaceBetween: 40,
+            },
+            768: {
+                slidesPerView: "auto", 
+                spaceBetween: 30,
+            },
+            480: {
+                slidesPerView: "auto",
+                spaceBetween: 20,
+            }
+        },
+        
+        // ホバー時に一時停止
+        on: {
+            init: function() {
+                this.el.addEventListener('mouseenter', () => {
+                    this.autoplay.stop();
+                });
+                this.el.addEventListener('mouseleave', () => {
+                    this.autoplay.start();
                 });
             }
         }

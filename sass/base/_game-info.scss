@@ -171,6 +171,19 @@
     border-radius: 12px;
   }
   
+  &__type {
+    display: inline-block;
+    background-color: $sub-accent;
+    color: $text-white;
+    font-size: 12px;
+    font-weight: $bold;
+    padding: 4px 12px;
+    border-radius: 12px;
+    margin-right: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
   &__match {
     text-align: center;
   }
@@ -456,6 +469,19 @@
 
 .upcoming-game-details {
   flex: 1;
+}
+
+.upcoming-game-type {
+  display: inline-block;
+  background-color: $sub-accent;
+  color: $text-white;
+  font-size: 11px;
+  font-weight: $bold;
+  padding: 3px 10px;
+  border-radius: 10px;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
 .upcoming-game-teams {

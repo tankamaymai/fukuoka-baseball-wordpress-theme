@@ -4,9 +4,8 @@
 .footer {
   background: $accent-color;
   color: $text-white;
-  padding: 60px 0 0;
+  padding: 40px 0 0;
   margin-top: auto;
-  position: relative;
 }
 
 .footer__inner {
@@ -16,84 +15,53 @@
 }
 
 .footer__content {
-  display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
-  gap: 40px;
-  margin-bottom: 40px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-  padding-bottom: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 // フッターロゴ
 .footer__logo {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   gap: 15px;
 }
 
 .footer__logo-img {
-  max-width: 120px;
+  max-width: 80px;
   width: 100%;
   height: auto;
-  aspect-ratio: 2 / 1;
-  
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
+  aspect-ratio: 1 / 1;
 }
 
 .footer__logo-text {
   font-family: $base-font;
   font-weight: $bold;
-  font-size: 18px;
+  font-size: 16px;
   color: $text-white;
   margin: 0;
   letter-spacing: 0.05em;
 }
 
 // フッターナビゲーション
-.footer__nav {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  gap: 30px;
-}
-
-.footer__nav-section {
-  margin-bottom: 0;
-  padding: 20px;
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 8px;
-}
-
-.footer__nav-title {
-  font-family: $base-font;
-  font-weight: $bold;
-  font-size: 16px;
-  color: $sub-accent;
-  margin-bottom: 15px;
-  padding-bottom: 8px;
-  border-bottom: 2px solid $sub-accent;
-}
-
 .footer__nav-list {
   list-style: none;
   padding: 0;
   margin: 0;
+  display: flex;
+  gap: 30px;
 }
 
 .footer__nav-item {
-  margin-bottom: 8px;
+  margin: 0;
 }
 
 .footer__nav-link {
   color: $text-white;
   text-decoration: none;
   font-size: 14px;
-  line-height: 1.5;
   transition: color 0.3s ease;
   
   &:hover {
@@ -101,189 +69,130 @@
   }
 }
 
-// SNSリンク
-.footer__social {
-  text-align: center;
-  background: rgba(255, 255, 255, 0.05);
-  padding: 25px;
-  border-radius: 8px;
+// スポンサーセクション
+.footer__sponsors {
+  padding: 40px 0 30px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  margin-bottom: 30px;
 }
 
-.footer__social-title {
+.footer__sponsors-title {
   font-family: $base-font;
   font-weight: $bold;
   font-size: 18px;
-  color: $sub-accent;
-  margin-bottom: 20px;
-  padding-bottom: 8px;
-  border-bottom: 2px solid $sub-accent;
-}
-
-.footer__social-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-}
-
-.footer__social-link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 50px;
-  height: 50px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 50%;
   color: $text-white;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  
-  &:hover {
-    background: $sub-accent;
-    transform: translateY(-2px);
+  text-align: center;
+  margin: 0 0 20px 0;
+  letter-spacing: 0.05em;
+}
+
+.footer__sponsors-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  @include mq("md") {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include mq("sp") {
+    grid-template-columns: repeat(1, 1fr);
   }
 }
 
-.footer__social-icon {
-  font-size: 22px;
+.footer__sponsor-item {
+  max-width: 280px;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 280 / 110;
 }
 
+.footer__sponsor-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
 
 // フッターボトム
 .footer__bottom {
   text-align: center;
-  padding: 25px 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-  background: rgba(0, 0, 0, 0.1);
-  margin: 0 -25px;
-  padding-left: 25px;
-  padding-right: 25px;
+  padding: 20px 0;
 }
-
 
 .footer__copyright {
   font-size: 14px;
-  color: $text-white;
-  
-  p {
-    margin: 0;
-  }
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
 }
 
 // レスポンシブ対応
 @include mq("md") {
-  .footer {
-    padding: 50px 0 0;
-  }
-  
   .footer__inner {
     padding: 0 15px;
   }
   
   .footer__content {
-    grid-template-columns: 1fr;
-    gap: 30px;
+    flex-direction: column;
     text-align: center;
-  }
-  
-  .footer__logo {
-    align-items: center;
-  }
-  
-  .footer__nav {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto;
     gap: 20px;
   }
   
-  .footer__nav-section {
-    text-align: center;
-    padding: 18px;
-  }
-  
-  .footer__social {
-    padding: 20px;
-  }
-  
-  .footer__social-list {
-    gap: 12px;
-  }
-  
-  .footer__social-link {
-    width: 45px;
-    height: 45px;
-  }
-  
-  .footer__social-icon {
-    font-size: 20px;
-  }
-  
-  .footer__bottom {
-    margin: 0 -15px;
-    padding-left: 15px;
-    padding-right: 15px;
+  .footer__nav-list {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
   }
 }
 
 @include mq("sp") {
   .footer {
-    padding: 40px 0 0;
+    padding: 30px 0 0;
   }
   
   .footer__content {
-    gap: 25px;
-    margin-bottom: 30px;
-    padding-bottom: 30px;
+    padding-bottom: 20px;
+    margin-bottom: 15px;
   }
   
   .footer__logo-img {
-    max-width: 100px;
+    max-width: 60px;
   }
   
   .footer__logo-text {
-    font-size: 16px;
+    font-size: 14px;
   }
   
-  .footer__nav-section {
-    padding: 15px;
-  }
-  
-  .footer__nav-title {
-    font-size: 15px;
+  .footer__nav-list {
+    gap: 10px;
   }
   
   .footer__nav-link {
     font-size: 13px;
   }
   
-  .footer__social {
-    padding: 18px;
+  .footer__sponsors {
+    padding: 30px 0 20px 0;
   }
   
-  .footer__social-title {
+  .footer__sponsors-title {
     font-size: 16px;
+    margin-bottom: 15px;
   }
   
-  .footer__social-list {
-    gap: 10px;
+  .footer__sponsors-list {
+    gap: 20px;
   }
   
-  .footer__social-link {
-    width: 40px;
-    height: 40px;
-  }
-  
-  .footer__social-icon {
-    font-size: 18px;
+  .footer__sponsor-item {
+    max-width: 80px;
   }
   
   .footer__bottom {
-    padding: 20px 0;
+    padding: 15px 0;
   }
   
   .footer__copyright {
-    font-size: 13px;
+    font-size: 12px;
   }
 }

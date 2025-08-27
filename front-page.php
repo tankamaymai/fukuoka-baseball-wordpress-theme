@@ -3,24 +3,144 @@
 <main>
     <!-- ヒーローセクション -->
     <section class="hero">
-        <div class="hero__bg">
-            <picture>
-                <source srcset="<?php echo esc_url(get_theme_file_uri('/images/fukuoka-b-fv-bg.webp')); ?>" media="(min-width: 768px)">
-                <img src="<?php echo esc_url(get_theme_file_uri('/images/fukuoka-b-fv-sp-bg.webp')); ?>" alt="福岡ベースボールクラブ チーム風景" class="hero__bg-img">
-            </picture>
-           
+        <!-- 上品な装飾要素 -->
+        <div class="hero__decorations">
+            <div class="hero__decoration hero__decoration--top-left"></div>
+            <div class="hero__decoration hero__decoration--top-right"></div>
+            <div class="hero__decoration hero__decoration--bottom-left"></div>
+            <div class="hero__decoration hero__decoration--bottom-right"></div>
         </div>
-        <div class="hero__scrolling-text">
-            <div class="hero__text-line">Passion Makes You Unstoppable</div>
-        </div>
-        <div class="hero__content">
-            <div class="hero-fv-img">
-                <picture>
-                    <source srcset="<?php echo esc_url(get_theme_file_uri('/images/fukuoka-b-fv-6.webp')); ?>" media="(min-width: 768px)">
-                    <img src="<?php echo esc_url(get_theme_file_uri('/images/fukuoka-b-fv-sp2.webp')); ?>"
-                        alt="福岡ベースボールクラブ チーム風景" class="hero-fv-img__img">
-                </picture>
+        
+  
+        
+        <!-- Swiper Hero Slider -->
+        <div class="swiper hero-swiper">
+            <div class="swiper-wrapper">
+                <!-- スライド1 -->
+                <div class="swiper-slide">
+                    <div class="hero-slide">
+                        <div class="hero-slide__bg">
+                            <picture>
+                                <source srcset="<?php echo esc_url(get_theme_file_uri('/images/fukuoka-b-ga1.webp')); ?>" media="(min-width: 768px)">
+                                <img src="<?php echo esc_url(get_theme_file_uri('/images/fukuoka-b-ga1.webp')); ?>" alt="福岡ベースボールクラブ チーム風景" class="hero-slide__bg-img">
+                            </picture>
+                        </div>
+                        <div class="hero-slide__content">
+                            <div class="hero-slide__text">
+
+                                <h2 class="hero-slide__title">FUKUOKA BASEBALL CLUB</h2>
+                                <p class="hero-slide__description">Love is Invincible</p>
+                                <div class="hero-slide__accent-dots">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- スライド2 -->
+                <div class="swiper-slide">
+                    <div class="hero-slide">
+                        <div class="hero-slide__bg">
+                            <picture>
+                                <source srcset="<?php echo esc_url(get_theme_file_uri('/images/fukuoka-b-ga2.webp')); ?>" media="(min-width: 768px)">
+                                <img src="<?php echo esc_url(get_theme_file_uri('/images/fukuoka-b-ga2.webp')); ?>" alt="福岡ベースボールクラブ 練習風景" class="hero-slide__bg-img">
+                            </picture>
+                        </div>
+                        <div class="hero-slide__content">
+                            <div class="hero-slide__text">
+                              
+                                <h2 class="hero-slide__title">FUKUOKA BASEBALL CLUB</h2>
+                                <p class="hero-slide__description">Love is Invincible</p>
+                                <div class="hero-slide__accent-dots">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- スライド3 -->
+                <div class="swiper-slide">
+                    <div class="hero-slide">
+                        <div class="hero-slide__bg">
+                            <picture>
+                                <source srcset="<?php echo esc_url(get_theme_file_uri('/images/fukuoka-b-ga3.webp')); ?>" media="(min-width: 768px)">
+                                <img src="<?php echo esc_url(get_theme_file_uri('/images/fukuoka-b-ga3.webp')); ?>" alt="福岡ベースボールクラブ 試合風景" class="hero-slide__bg-img">
+                            </picture>
+                        </div>
+                        <div class="hero-slide__content">
+                            <div class="hero-slide__text">
+                               
+                                <h2 class="hero-slide__title">FUKUOKA BASEBALL CLUB</h2>
+                                <p class="hero-slide__description">Love is Invincible</p>
+                                <div class="hero-slide__accent-dots">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- スライド4 -->
+                <div class="swiper-slide">
+                    <div class="hero-slide">
+                        <div class="hero-slide__bg">
+                            <picture>
+                                <source srcset="<?php echo esc_url(get_theme_file_uri('/images/fukuoka-b-ga4.webp')); ?>" media="(min-width: 768px)">
+                                <img src="<?php echo esc_url(get_theme_file_uri('/images/fukuoka-b-ga4.webp')); ?>" alt="福岡ベースボールクラブ 練習施設" class="hero-slide__bg-img">
+                            </picture>
+                        </div>
+                        <div class="hero-slide__content">
+                            <div class="hero-slide__text">
+                                <div class="hero-slide__accent-line"></div>
+                                <h2 class="hero-slide__title">FUKUOKA BASEBALL CLUB</h2>
+                                <p class="hero-slide__description">Love is Invincible</p>
+                                <div class="hero-slide__accent-dots">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- スライド5 -->
+                <div class="swiper-slide">
+                    <div class="hero-slide">
+                        <div class="hero-slide__bg">
+                            <picture>
+                                <source srcset="<?php echo esc_url(get_theme_file_uri('/images/fukuoka-b-ga5.webp')); ?>" media="(min-width: 768px)">
+                                <img src="<?php echo esc_url(get_theme_file_uri('/images/fukuoka-b-ga5.webp')); ?>" alt="福岡ベースボールクラブ チームメンバー" class="hero-slide__bg-img">
+                            </picture>
+                        </div>
+                        <div class="hero-slide__content">
+                            <div class="hero-slide__text">
+                               
+                                <h2 class="hero-slide__title">FUKUOKA BASEBALL CLUB</h2>
+                                <p class="hero-slide__description">Love is Invincible</p>
+                                <div class="hero-slide__accent-dots">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
+            
+            <!-- ナビゲーション -->
+            <div class="hero-swiper-pagination"></div>
+            <div class="hero-swiper-button-prev"></div>
+            <div class="hero-swiper-button-next"></div>
         </div>
     </section>
 
@@ -30,26 +150,80 @@
     <section class="latest-result">
         <div class="inner">
             <h2 class="section-title">最新の試合結果</h2>
-            <div class="result-card">
-                <div class="result-card__date">
-                    <span class="result-card__month">8</span>
-                    <span class="result-card__day">10</span>
-                </div>
-                <div class="result-card__details">
-                    <div class="result-card__teams">福岡ベースボールクラブ vs 熊本ライオンズ</div>
-                    <div class="result-card__score">
-                        <span class="result-card__score-home">7</span>
-                        <span class="result-card__score-separator">-</span>
-                        <span class="result-card__score-away">4</span>
+            <?php
+            // 最新の試合結果を1つ取得
+            $latest_result_query = new WP_Query(array(
+                'post_type' => 'game_result',
+                'posts_per_page' => 1,
+                'meta_key' => 'game_date',
+                'orderby' => 'meta_value',
+                'order' => 'DESC',
+                'post_status' => 'publish'
+            ));
+            
+            if ($latest_result_query->have_posts()):
+                while ($latest_result_query->have_posts()):
+                    $latest_result_query->the_post();
+                    
+                    $game_date = get_post_meta(get_the_ID(), 'game_date', true);
+                    $game_type = get_post_meta(get_the_ID(), 'game_type', true);
+                    $opponent = get_post_meta(get_the_ID(), 'opponent', true);
+                    $our_score = get_post_meta(get_the_ID(), 'our_score', true);
+                    $opponent_score = get_post_meta(get_the_ID(), 'opponent_score', true);
+                    $game_result = get_post_meta(get_the_ID(), 'game_result', true);
+                    $game_location = get_post_meta(get_the_ID(), 'game_location', true);
+                    
+                    $date_obj = DateTime::createFromFormat('Y-m-d', $game_date);
+                    ?>
+                    <div class="result-card">
+                        <div class="result-card__date">
+                            <span class="result-card__month"><?php echo $date_obj ? $date_obj->format('n') : ''; ?></span>
+                            <span class="result-card__day"><?php echo $date_obj ? $date_obj->format('j') : ''; ?></span>
+                        </div>
+                        <div class="result-card__details">
+                            <?php if ($game_type): ?>
+                                <div class="result-card__type"><?php echo esc_html($game_type); ?></div>
+                            <?php endif; ?>
+                            <div class="result-card__teams">福岡ベースボールクラブ vs <?php echo esc_html($opponent ?: '対戦相手'); ?></div>
+                            <div class="result-card__score">
+                                <span class="result-card__score-home"><?php echo esc_html($our_score ?: '0'); ?></span>
+                                <span class="result-card__score-separator">-</span>
+                                <span class="result-card__score-away"><?php echo esc_html($opponent_score ?: '0'); ?></span>
+                            </div>
+                            <div class="result-card__result"><?php echo esc_html($game_result ?: '未確定'); ?></div>
+                            <div class="result-card__venue"><?php echo esc_html($game_location ?: '会場未定'); ?></div>
+                        </div>
+                        <div class="result-card__action">
+                            <a href="<?php echo esc_url(home_url('game-info')); ?>" class="btn btn-outline">試合詳細を見る</a>
+                        </div>
                     </div>
-                    <div class="result-card__result">勝利</div>
-                    <div class="result-card__venue">福岡ドーム</div>
+                    <?php
+                endwhile;
+                wp_reset_postdata();
+            else:
+                ?>
+                <div class="result-card">
+                    <div class="result-card__date">
+                        <span class="result-card__month">-</span>
+                        <span class="result-card__day">-</span>
+                    </div>
+                    <div class="result-card__details">
+                        <div class="result-card__teams">試合結果をお待ちください</div>
+                        <div class="result-card__score">
+                            <span class="result-card__score-home">-</span>
+                            <span class="result-card__score-separator">-</span>
+                            <span class="result-card__score-away">-</span>
+                        </div>
+                        <div class="result-card__result">-</div>
+                        <div class="result-card__venue">-</div>
+                    </div>
+                    <div class="result-card__action">
+                        <a href="<?php echo esc_url(home_url('game-info')); ?>" class="btn btn-outline">試合情報を見る</a>
+                    </div>
                 </div>
-                <div class="result-card__action">
-                    <a href="#" class="btn btn-outline">試合詳細を見る</a>
-
-                </div>
-            </div>
+                <?php
+            endif;
+            ?>
         </div>
     </section>
         <!-- ABOUTセクション -->
@@ -123,63 +297,166 @@
                 <p class="section-subtitle">当チームから羽ばたいたプロ選手たち</p>
             </div>
             <div class="alumni-list">
-                <div class="alumni-card">
-                    <div class="alumni-card__year">2023</div>
-                    <div class="alumni-card__info">
-                        <h3 class="alumni-card__name">山田 太郎</h3>
-                        <div class="alumni-card__position">投手</div>
-                        <div class="alumni-card__destination">プロ野球選手</div>
-                        <div class="alumni-card__team">福岡ソフトバンクホークス</div>
+                <?php
+                // 排出選手データを取得
+                $alumni_query = new WP_Query(array(
+                    'post_type' => 'alumni_player',
+                    'posts_per_page' => -1,
+                    'meta_key' => '_alumni_display_order',
+                    'orderby' => array(
+                        'meta_value_num' => 'ASC',
+                        'meta_value' => 'ASC',
+                        'date' => 'DESC'
+                    ),
+                    'post_status' => 'publish'
+                ));
+                
+                if ($alumni_query->have_posts()):
+                    while ($alumni_query->have_posts()):
+                        $alumni_query->the_post();
+                        
+                        // カスタムフィールドから情報を取得
+                        $year = get_post_meta(get_the_ID(), '_alumni_year', true);
+                        $position = get_post_meta(get_the_ID(), '_alumni_position', true);
+                        $destination = get_post_meta(get_the_ID(), '_alumni_destination', true);
+                        $team = get_post_meta(get_the_ID(), '_alumni_team', true);
+                        ?>
+                        <div class="alumni-card">
+                            <div class="alumni-card__year"><?php echo esc_html($year ?: '----'); ?></div>
+                            <div class="alumni-card__info">
+                                <h3 class="alumni-card__name"><?php the_title(); ?></h3>
+                                <?php if ($position): ?>
+                                    <div class="alumni-card__position"><?php echo esc_html($position); ?></div>
+                                <?php endif; ?>
+                                <?php if ($destination): ?>
+                                    <div class="alumni-card__destination"><?php echo esc_html($destination); ?></div>
+                                <?php endif; ?>
+                                <?php if ($team): ?>
+                                    <div class="alumni-card__team"><?php echo esc_html($team); ?></div>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                        <?php
+                    endwhile;
+                    wp_reset_postdata();
+                else:
+                    // データがない場合のメッセージ
+                    ?>
+                    <div class="alumni-empty">
+                        <p>現在、排出選手の情報はありません。</p>
+                        <?php if (current_user_can('manage_options')): ?>
+                            <p><a href="<?php echo admin_url('post-new.php?post_type=alumni_player'); ?>" target="_blank">管理画面から排出選手を追加する →</a></p>
+                        <?php endif; ?>
                     </div>
-                </div>
-                <div class="alumni-card">
-                    <div class="alumni-card__year">2022</div>
-                    <div class="alumni-card__info">
-                        <h3 class="alumni-card__name">佐藤 次郎</h3>
-                        <div class="alumni-card__position">内野手</div>
-                        <div class="alumni-card__destination">プロ野球選手</div>
-                        <div class="alumni-card__team">読売ジャイアンツ</div>
-                    </div>
-                </div>
-                <div class="alumni-card">
-                    <div class="alumni-card__year">2021</div>
-                    <div class="alumni-card__info">
-                        <h3 class="alumni-card__name">田中 三郎</h3>
-                        <div class="alumni-card__position">外野手</div>
-                        <div class="alumni-card__destination">プロ野球選手</div>
-                        <div class="alumni-card__team">阪神タイガース</div>
-                    </div>
-                </div>
-                <div class="alumni-card">
-                    <div class="alumni-card__year">2020</div>
-                    <div class="alumni-card__info">
-                        <h3 class="alumni-card__name">鈴木 四郎</h3>
-                        <div class="alumni-card__position">捕手</div>
-                        <div class="alumni-card__destination">プロ野球選手</div>
-                        <div class="alumni-card__team">千葉ロッテマリーンズ</div>
-                    </div>
-                </div>
-                <div class="alumni-card">
-                    <div class="alumni-card__year">2019</div>
-                    <div class="alumni-card__info">
-                        <h3 class="alumni-card__name">高橋 五郎</h3>
-                        <div class="alumni-card__position">投手</div>
-                        <div class="alumni-card__destination">プロ野球選手</div>
-                        <div class="alumni-card__team">広島東洋カープ</div>
-                    </div>
-                </div>
-                <div class="alumni-card">
-                    <div class="alumni-card__year">2018</div>
-                    <div class="alumni-card__info">
-                        <h3 class="alumni-card__name">伊藤 六郎</h3>
-                        <div class="alumni-card__position">内野手</div>
-                        <div class="alumni-card__destination">プロ野球選手</div>
-                        <div class="alumni-card__team">西武ライオンズ</div>
+                    <?php
+                endif;
+                ?>
+            </div>
+        </div>
+    </section>
+    
+    <!-- スポンサーセクション -->
+    <section class="sponsor-section" id="sponsors">
+        <div class="sponsor-section__inner">
+            <div class="sponsor-slider">
+                <div class="swiper sponsor-swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="sponsor-item">
+                                <img src="<?php echo esc_url(get_theme_file_uri('/images/sponser-logo1.webp')); ?>" alt="スポンサー1" class="sponsor-item__img">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="sponsor-item">
+                                <img src="<?php echo esc_url(get_theme_file_uri('/images/sponser-logo2.webp')); ?>" alt="スポンサー2" class="sponsor-item__img">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="sponsor-item">
+                                <img src="<?php echo esc_url(get_theme_file_uri('/images/sponser-logo3.webp')); ?>" alt="スポンサー3" class="sponsor-item__img">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="sponsor-item">
+                                <img src="<?php echo esc_url(get_theme_file_uri('/images/sponser-logo4.webp')); ?>" alt="スポンサー4" class="sponsor-item__img">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="sponsor-item">
+                                <img src="<?php echo esc_url(get_theme_file_uri('/images/sponser-logo1.webp')); ?>" alt="スポンサー1" class="sponsor-item__img">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="sponsor-item">
+                                <img src="<?php echo esc_url(get_theme_file_uri('/images/sponser-logo2.webp')); ?>" alt="スポンサー2" class="sponsor-item__img">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="sponsor-item">
+                                <img src="<?php echo esc_url(get_theme_file_uri('/images/sponser-logo1.webp')); ?>" alt="スポンサー1" class="sponsor-item__img">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="sponsor-item">
+                                <img src="<?php echo esc_url(get_theme_file_uri('/images/sponser-logo2.webp')); ?>" alt="スポンサー2" class="sponsor-item__img">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="sponsor-item">
+                                <img src="<?php echo esc_url(get_theme_file_uri('/images/sponser-logo3.webp')); ?>" alt="スポンサー3" class="sponsor-item__img">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="sponsor-item">
+                                <img src="<?php echo esc_url(get_theme_file_uri('/images/sponser-logo4.webp')); ?>" alt="スポンサー4" class="sponsor-item__img">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="sponsor-item">
+                                <img src="<?php echo esc_url(get_theme_file_uri('/images/sponser-logo1.webp')); ?>" alt="スポンサー1" class="sponsor-item__img">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="sponsor-item">
+                                <img src="<?php echo esc_url(get_theme_file_uri('/images/sponser-logo2.webp')); ?>" alt="スポンサー2" class="sponsor-item__img">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="sponsor-item">
+                                <img src="<?php echo esc_url(get_theme_file_uri('/images/sponser-logo1.webp')); ?>" alt="スポンサー1" class="sponsor-item__img">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="sponsor-item">
+                                <img src="<?php echo esc_url(get_theme_file_uri('/images/sponser-logo2.webp')); ?>" alt="スポンサー2" class="sponsor-item__img">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="sponsor-item">
+                                <img src="<?php echo esc_url(get_theme_file_uri('/images/sponser-logo3.webp')); ?>" alt="スポンサー3" class="sponsor-item__img">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="sponsor-item">
+                                <img src="<?php echo esc_url(get_theme_file_uri('/images/sponser-logo4.webp')); ?>" alt="スポンサー4" class="sponsor-item__img">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="sponsor-item">
+                                <img src="<?php echo esc_url(get_theme_file_uri('/images/sponser-logo1.webp')); ?>" alt="スポンサー1" class="sponsor-item__img">
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="sponsor-item">
+                                <img src="<?php echo esc_url(get_theme_file_uri('/images/sponser-logo2.webp')); ?>" alt="スポンサー2" class="sponsor-item__img">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    
     <!-- 最新ニュース -->
     <section class="news-section" id="news">
         <div class="inner">

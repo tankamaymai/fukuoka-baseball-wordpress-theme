@@ -1,0 +1,136 @@
+=====================================================
+福岡ベースボールクラブ - Contact Form 7 設定用コード
+=====================================================
+
+【使用方法】
+1. WordPressの管理画面で「お問い合わせ」→「新規追加」をクリック
+2. 下記のフォームコードをコピーして「フォーム」タブに貼り付け
+3. メールアドレス設定を確認して保存
+4. 生成されたショートコードをpage-contact.phpの33行目に設定
+
+=====================================================
+【フォームコード】（Contact Form 7の「フォーム」タブに貼り付け）
+=====================================================
+
+<div class="contact-form">
+    <div class="contact-form__field">
+        <label class="contact-form__label" for="contact-name">
+            お名前<span class="contact-form__required">*</span>
+        </label>
+        [text* contact-name id:contact-name class:contact-form__input placeholder "山田太郎"]
+    </div>
+
+    <div class="contact-form__field">
+        <label class="contact-form__label" for="contact-email">
+            メールアドレス<span class="contact-form__required">*</span>
+        </label>
+        [email* contact-email id:contact-email class:contact-form__input placeholder "example@email.com"]
+    </div>
+
+    <div class="contact-form__field">
+        <label class="contact-form__label" for="contact-phone">
+            電話番号
+        </label>
+        [tel contact-phone id:contact-phone class:contact-form__input placeholder "090-1234-5678"]
+    </div>
+
+    <div class="contact-form__field">
+        <label class="contact-form__label" for="contact-subject">
+            件名<span class="contact-form__required">*</span>
+        </label>
+        [select* contact-subject id:contact-subject class:contact-form__input "入団について" "練習見学について" "試合について" "スポンサーシップについて" "その他"]
+    </div>
+
+    <div class="contact-form__field">
+        <label class="contact-form__label" for="contact-message">
+            お問い合わせ内容<span class="contact-form__required">*</span>
+        </label>
+        [textarea* contact-message id:contact-message class:contact-form__textarea placeholder "お問い合わせ内容をご記入ください"]
+    </div>
+
+    <div class="contact-form__field contact-form__field--checkbox">
+        [acceptance contact-agreement class:contact-form__checkbox]
+        <label for="contact-agreement">
+            <a href="/privacy-policy" target="_blank">プライバシーポリシー</a>に同意します
+        </label>
+    </div>
+
+    <div class="contact-form__submit">
+        [submit class:contact-form__button "送信する"]
+    </div>
+</div>
+
+=====================================================
+【メール設定】（Contact Form 7の「メール」タブに設定）
+=====================================================
+
+■管理者宛メール設定：
+送信先: info@fukuoka-baseball.com
+送信者: [contact-name] <[contact-email]>
+題名: 【福岡ベースボールクラブ】お問い合わせ - [contact-subject]
+メッセージ本文:
+お問い合わせがありました。
+
+■お問い合わせ内容
+お名前: [contact-name]
+メールアドレス: [contact-email]
+電話番号: [contact-phone]
+件名: [contact-subject]
+
+■メッセージ
+[contact-message]
+
+---
+このメールは福岡ベースボールクラブのウェブサイトから送信されました。
+
+■自動返信メール設定（メール(2)タブ）：
+送信先: [contact-email]
+送信者: 福岡ベースボールクラブ <noreply@fukuoka-baseball.com>
+題名: 【福岡ベースボールクラブ】お問い合わせありがとうございます
+メッセージ本文:
+[contact-name] 様
+
+この度は、福岡ベースボールクラブにお問い合わせいただき、ありがとうございます。
+
+以下の内容でお問い合わせを受け付けいたしました。
+内容を確認の上、担当者より回答させていただきます。
+
+■お問い合わせ内容
+件名: [contact-subject]
+メッセージ: [contact-message]
+
+お急ぎの場合は、お電話でもお問い合わせを承っております。
+
+今後ともよろしくお願いいたします。
+
+---
+福岡ベースボールクラブ
+Email: info@fukuoka-baseball.com
+
+=====================================================
+【ショートコード例】
+=====================================================
+
+フォーム作成後、以下のようなショートコードが生成されます：
+[contact-form-7 id="123" title="お問い合わせフォーム"]
+
+このショートコードをpage-contact.phpの33行目に貼り付けてください：
+echo do_shortcode('[contact-form-7 id="123" title="お問い合わせフォーム"]');
+
+=====================================================
+【追加設定（オプション）】
+=====================================================
+
+■reCAPTCHA設定（スパム対策）：
+Contact Form 7の設定でreCAPTCHAを有効にする場合は、
+フォームの最後に以下を追加：
+
+<div class="contact-form__field">
+    [recaptcha]
+</div>
+
+■カスタムCSS（必要に応じて調整）：
+既に contact-form.scss で詳細なスタイルが設定済みです。
+さらなるカスタマイズが必要な場合は、そちらを編集してください。
+
+=====================================================
