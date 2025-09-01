@@ -93,3 +93,32 @@
             </div>
         </div>
     </header>
+
+    <!-- 固定バナー -->
+    <div class="fixed-banners js-fixed-banners">
+        <div class="fixed-banners__container">
+            <a href="<?php echo esc_url(home_url("gym")); ?>" class="fixed-banner fixed-banner--gym">
+                <div class="fixed-banner__logo">
+                    <img src="<?php echo esc_url(get_theme_file_uri("/images/gem-logo.webp")); ?>" alt="TASHIRO CLUB gym" class="fixed-banner__logo-img">
+                </div>
+                <div class="fixed-banner__content">
+                    <div class="fixed-banner__title">TASHIRO CLUB gym</div>
+                    <div class="fixed-banner__subtitle">詳細はこちら</div>
+                </div>
+            </a>
+            
+            <a href="<?php echo esc_url(home_url("career-support")); ?>" class="fixed-banner fixed-banner--career">
+                <div class="fixed-banner__icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2Z" fill="currentColor"/>
+                        <path d="M19 15L20.09 18.26L24 19L20.09 19.74L19 23L17.91 19.74L14 19L17.91 18.26L19 15Z" fill="currentColor"/>
+                        <path d="M5 15L6.09 18.26L10 19L6.09 19.74L5 23L3.91 19.74L0 19L3.91 18.26L5 15Z" fill="currentColor"/>
+                    </svg>
+                </div>
+                <div class="fixed-banner__content">
+                    <div class="fixed-banner__title">就職支援制度</div>
+                    <div class="fixed-banner__subtitle">詳細はこちら</div>
+                </div>
+            </a>
+        </div>
+    </div>

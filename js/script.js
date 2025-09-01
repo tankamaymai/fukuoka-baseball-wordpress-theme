@@ -273,3 +273,97 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+// 固定バナーの機能
+document.addEventListener('DOMContentLoaded', function() {
+    const fixedBanners = document.querySelector('.js-fixed-banners');
+    
+    if (fixedBanners) {
+        // バナーのクリック時のアニメーション
+        const bannerLinks = fixedBanners.querySelectorAll('.fixed-banner');
+        
+        bannerLinks.forEach(banner => {
+            banner.addEventListener('click', function(e) {
+                // クリック時のパルスアニメーション
+                this.style.transform = 'scale(0.95)';
+                this.style.transition = 'transform 0.1s ease';
+                
+                setTimeout(() => {
+                    this.style.transform = '';
+                    this.style.transition = 'all 0.3s ease';
+                }, 100);
+            });
+            
+            // ホバー時の追加エフェクト
+            banner.addEventListener('mouseenter', function() {
+                // SVGアイコンのアニメーション（就職支援制度バナー用）
+                const icon = this.querySelector('.fixed-banner__icon svg');
+                if (icon) {
+                    icon.style.transform = 'rotate(10deg) scale(1.1)';
+                    icon.style.transition = 'transform 0.3s ease';
+                }
+                
+                // ロゴ画像のアニメーション（田代ジムバナー用）
+                const logo = this.querySelector('.fixed-banner__logo-img');
+                if (logo) {
+                    logo.style.transform = 'scale(1.1)';
+                    logo.style.transition = 'transform 0.3s ease';
+                }
+            });
+            
+            banner.addEventListener('mouseleave', function() {
+                // SVGアイコンのリセット
+                const icon = this.querySelector('.fixed-banner__icon svg');
+                if (icon) {
+                    icon.style.transform = 'rotate(0deg) scale(1)';
+                    icon.style.transition = 'transform 0.3s ease';
+                }
+                
+                // ロゴ画像のリセット
+                const logo = this.querySelector('.fixed-banner__logo-img');
+                if (logo) {
+                    logo.style.transform = 'scale(1)';
+                    logo.style.transition = 'transform 0.3s ease';
+                }
+            });
+        });
+        
+        // スクロール時の表示制御（必要に応じて）
+        let lastScrollY = window.scrollY;
+        let ticking = false;
+        
+        function updateBannerVisibility() {
+            const currentScrollY = window.scrollY;
+            const isMobile = window.innerWidth <= 767;
+            
+            // モバイルでスクロール時に一時的に隠す（オプション）
+            if (isMobile) {
+                if (Math.abs(currentScrollY - lastScrollY) > 50) {
+                    if (currentScrollY > lastScrollY) {
+                        // 下スクロール時：少し透明に
+                        fixedBanners.style.opacity = '0.7';
+                    } else {
+                        // 上スクロール時：元に戻す
+                        fixedBanners.style.opacity = '1';
+                    }
+                }
+            }
+            
+            lastScrollY = currentScrollY;
+            ticking = false;
+        }
+        
+        window.addEventListener('scroll', function() {
+            if (!ticking) {
+                requestAnimationFrame(updateBannerVisibility);
+                ticking = true;
+            }
+        });
+        
+        // リサイズ時の処理
+        window.addEventListener('resize', function() {
+            // リサイズ時に透明度をリセット
+            fixedBanners.style.opacity = '1';
+        });
+    }
+});
+

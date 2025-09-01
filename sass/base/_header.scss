@@ -283,3 +283,246 @@
         width: 250px;
     }
 }
+
+// 固定バナー
+.fixed-banners {
+    position: fixed;
+    z-index: 98;
+    
+    // PC（768px以上）
+    @media (min-width: 768px) {
+        right: 20px;
+        bottom: 30px;
+    }
+    
+    // モバイル（767px以下）
+    @media (max-width: 767px) {
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 -2px 20px rgba(37, 50, 114, 0.15);
+        padding: 12px 15px;
+    }
+}
+
+.fixed-banners__container {
+    display: flex;
+    
+    // PC（768px以上）
+    @media (min-width: 768px) {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    // モバイル（767px以下）
+    @media (max-width: 767px) {
+        flex-direction: row;
+        gap: 10px;
+        justify-content: space-between;
+    }
+}
+
+.fixed-banner {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    background: linear-gradient(135deg, $accent-color 0%, $sub-accent 100%);
+    color: $main-color;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(37, 50, 114, 0.2);
+    overflow: hidden;
+    position: relative;
+    
+    // PC（768px以上）
+    @media (min-width: 768px) {
+        padding: 20px 22px;
+        min-width: 220px;
+        min-height: 80px;
+        gap: 15px;
+        
+        &:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 30px rgba(37, 50, 114, 0.3);
+        }
+    }
+    
+    // モバイル（767px以下）
+    @media (max-width: 767px) {
+        padding: 12px 15px;
+        flex: 1;
+        gap: 8px;
+        min-height: 50px;
+        
+        &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(37, 50, 114, 0.25);
+        }
+    }
+    
+    // バナー別カラー設定
+    &--gym {
+        background: linear-gradient(135deg, $sub-accent 0%, lighten($sub-accent, 10%) 100%);
+        
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 60px;
+            height: 100%;
+            background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.1) 100%);
+        }
+    }
+    
+    &--career {
+        background: linear-gradient(135deg, $accent-color 0%, lighten($accent-color, 15%) 100%);
+        
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 60px;
+            height: 100%;
+            background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.1) 100%);
+        }
+    }
+}
+
+.fixed-banner__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    
+    // PC（768px以上）
+    @media (min-width: 768px) {
+        width: 45px;
+        height: 45px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+    }
+    
+    // モバイル（767px以下）
+    @media (max-width: 767px) {
+        width: 32px;
+        height: 32px;
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 6px;
+    }
+    
+    svg {
+        // PC（768px以上）
+        @media (min-width: 768px) {
+            width: 25px;
+            height: 25px;
+        }
+        
+        // モバイル（767px以下）
+        @media (max-width: 767px) {
+            width: 18px;
+            height: 18px;
+        }
+    }
+}
+
+.fixed-banner__logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    
+    // PC（768px以上）
+    @media (min-width: 768px) {
+        width: 110px;
+        height: auto;
+        padding: 10px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 8px;
+    }
+    
+    // モバイル（767px以下）
+    @media (max-width: 767px) {
+        width: 70px;
+        height: auto;
+        padding: 6px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 6px;
+    }
+}
+
+.fixed-banner__logo-img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 210 / 58;
+    object-fit: contain;
+    filter: brightness(0) invert(1); // 白色にする
+}
+
+.fixed-banner__content {
+    flex: 1;
+    min-width: 0;
+}
+
+.fixed-banner__title {
+    font-family: $base-font;
+    font-weight: $bold;
+    line-height: 1.2;
+    
+    // PC（768px以上）
+    @media (min-width: 768px) {
+        font-size: 15px;
+        margin-bottom: 3px;
+    }
+    
+    // モバイル（767px以下）
+    @media (max-width: 767px) {
+        font-size: 12px;
+        margin-bottom: 1px;
+    }
+}
+
+.fixed-banner__subtitle {
+    font-family: $base-font;
+    font-weight: $regular;
+    opacity: 0.9;
+    line-height: 1;
+    
+    // PC（768px以上）
+    @media (min-width: 768px) {
+        font-size: 12px;
+    }
+    
+    // モバイル（767px以下）
+    @media (max-width: 767px) {
+        font-size: 10px;
+    }
+}
+
+// アニメーション設定
+.fixed-banners {
+    animation: slideInBanners 0.6s ease-out 0.8s both;
+}
+
+@keyframes slideInBanners {
+    from {
+        // PC
+        @media (min-width: 768px) {
+            transform: translateX(100%);
+            opacity: 0;
+        }
+        
+        // モバイル
+        @media (max-width: 767px) {
+            transform: translateY(100%);
+            opacity: 0;
+        }
+    }
+    to {
+        transform: translate(0);
+        opacity: 1;
+    }
+}
